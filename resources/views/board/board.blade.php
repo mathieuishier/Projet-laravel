@@ -16,9 +16,9 @@
 
 @foreach ($boards as $b)
 
-{{-- <a href="@route('{{ $b->boardName }}')"> --}}
+ <a href="@route(board.[$b->boardName])">
    <h5 class="card-title">{{ $b->boardName }}</h5>
-{{-- </a> --}}
+</a>
 
 @endforeach
 
