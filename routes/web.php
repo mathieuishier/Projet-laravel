@@ -35,4 +35,4 @@ Route::post('/board', 'Board\BoardController@store')->name('board.store');
 // Route::post('/{id}/board','Board\BoardController@store')
 //     ->name('board.store');
 
-Route::get('/board/{boardname}, 'Board\BoardController@index')->middleware('auth')->name('board');
+// Route::get('/board/{boardname}, 'Board\BoardController@index')->middleware('auth')->name('board');
