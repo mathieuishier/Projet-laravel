@@ -23,7 +23,7 @@ class BoardController extends Controller
     {
 
       $board=new Board();
-      $board->ownerId=DB::table('users')->select('id');
+    //   $board->ownerId=DB::table('users')->select('id');
       $board->boardName=$request->boardName;
       $board->save();
       return back();
