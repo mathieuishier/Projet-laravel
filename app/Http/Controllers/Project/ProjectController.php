@@ -5,16 +5,19 @@ namespace App\Http\Controllers\Project;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\User;
-use App\Project;
+use App\Board;
 use App\Todo;
-
 use Illuminate\Support\Facades\Auth;        // Need for get user login
 
 class ProjectController extends Controller
 {
+    // COS VERSION
     public function index($connect, $boardId)
     {
         return view ('project.project', [$boardId]);
+        //CED VERSION
+        // return view ('project.project', ["todos"=>Todo::all()->where(Board::where('boarId',$boardId))] );
+
     }
 
 

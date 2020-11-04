@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>tableau</title>
-</head>
-<body>
+@extends('layouts.app')
+
+@section('content')
+
 
     <h1>Liste de tous les tableaux (VUE GLOBALE)</h1>
 <form action="@route('board.store', [ Auth::user()->name ])" method="post">
@@ -23,5 +18,4 @@
 
 @endforeach
 
-</body>
-</html>
+@endsection

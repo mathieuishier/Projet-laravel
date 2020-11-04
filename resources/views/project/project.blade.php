@@ -1,17 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Project Page</title>
-</head>
-<body>
+@extends('layouts.app')
 
-    <h1>PAGE PROJET</h1>
-    <h2>On doit voir tous les todos</h2>
-
-<form action="@route('project.store', [ Auth::user()->name, $boardId ?? '' ])" method="post">
+@section('content')
+<form action="@route('todo.store', [ Auth::user()->name ])" method="post">
 @csrf
 <input name='todoName'type='text' placeholder="Nom du ticket">
 <input type='submit' value='+'>
@@ -27,7 +17,6 @@
 
 @endforeach --}}
 
-</body>
-</html>
+@endsection
 
 
