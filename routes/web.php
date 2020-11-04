@@ -29,5 +29,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 // Route::get('/board', 'BoardController@index')->middleware('auth')->name('board');
 // Route::post('/board', 'BoardController@store')->name('board.store');
 
-Route::get('/board','Board\BoardController@index')->middleware('auth')->name('board');
-Route::post('/board','Board\BoardController@store')->name('board.store');
+Route::get('/{id}/board','Board\BoardController@index')
+    ->middleware('auth')
+    ->name('board');
+Route::post('/{id}/board','Board\BoardController@store')
+    ->name('board.store');
+
