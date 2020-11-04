@@ -4,15 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>tableau</title>
+    <title>Project Page</title>
 </head>
 <body>
 
-<form action="@route('board.store', [ Auth::user()->name ])" method="post">
+    <h1>PAGE PROJET</h1>
+    <h2>On doit voir tous les todos</h2>
+
+<form action="@route('project.store', [ Auth::user()->name, $boardId ?? '' ])" method="post">
 @csrf
-<input name='boardName'type='text' placeholder="Nom du tableau">
+<input name='todoName'type='text' placeholder="Nom du ticket">
 <input type='submit' value='+'>
 </form>
+
 
 {{-- @foreach ($boards as $b)
 
