@@ -27,7 +27,7 @@ class BoardController extends Controller
                                                     // Step2 > Loadin data
         $board->ownerId = Auth::User()->id;         //  from user login
         $board->boardName=$request->boardName;
-
+        
         $board->save();                             // Step3 > Push in Table
 
         return back();

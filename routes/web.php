@@ -1,15 +1,6 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+
 use App\User;
 
 Route::get('/', function () {
@@ -27,9 +18,14 @@ Route::get('/{id}/board','Board\BoardController@index')
 Route::post('/{id}/board','Board\BoardController@store')
     ->name('board.store');
 
-Route::get('/{id}/board/project/{boardId}','Project\ProjectController@index')
+Route::get('/{id}/board/{boardId}','Project\ProjectController@index')
     ->middleware('auth')
     ->name('project');
-Route::post('/{id}/board/project/{boardId}','Project\ProjectController@store')
+Route::post('/{id}/board/{boardId}','Project\ProjectController@store')
     ->name('project.store');
 
+Route::get('/{id}/board/{todoId}','Todo\ProjectController@index')
+    ->middleware('auth')
+    ->name('todo');
+Route::post('/{id}/board/{todoId}','Todo\ProjectController@store')
+    ->name('todo.store');
