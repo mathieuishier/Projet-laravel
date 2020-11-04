@@ -14,13 +14,16 @@
 <input type='submit' value='+'>
 </form>
 
-@foreach ($boards as $b)
+{{-- @foreach ($boards as $b)
 
-<a href="@route('project', [ Auth::user()->name, $b->boardName ] )">
+ <a href="@route(board.[$b->boardName])">
+ <a href="@route('project', [ Auth::user()->name, $b->boardName ] )">
    <h5 class="card-title">{{ $b->boardName }}</h5>
 </a>
 
-@endforeach
+@endforeach --}}
 
 </body>
 </html>
+
+

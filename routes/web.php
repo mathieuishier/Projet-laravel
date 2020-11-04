@@ -19,20 +19,17 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-// Route::get('/home', function(){
-//     dd(User::all());
-// });
-
-// Route::get('/form', 'Form\FormController@form')->middleware('auth')->name('form');
-// Route::post('/form', 'Form\FormController@store')->name('store');
-
-Route::get('/board', 'Board\BoardController@index')->middleware('auth')->name('board');
-Route::post('/board', 'Board\BoardController@store')->name('board.store');
-
-// Route::get('/{id}/board','Board\BoardController@index')
-//     ->middleware('auth')
-//     ->name('board');
-// Route::post('/{id}/board','Board\BoardController@store')
-//     ->name('board.store');
 
 // Route::get('/board/{boardname}, 'Board\BoardController@index')->middleware('auth')->name('board');
+Route::get('/{id}/board','Board\BoardController@index')
+    ->middleware('auth')
+    ->name('board');
+Route::post('/{id}/board','Board\BoardController@store')
+    ->name('board.store');
+
+Route::get('/{id}/board/project/{boardId}','Project\ProjectController@index')
+    ->middleware('auth')
+    ->name('project');
+Route::post('/{id}/board/project/{boardId}','Project\ProjectController@store')
+    ->name('project.store');
+
