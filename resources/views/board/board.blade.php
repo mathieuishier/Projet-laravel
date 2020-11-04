@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<form action="@route('board.store')" method="post">
+<form action="@route('board.store', [ Auth::user()->name ])" method="post">
 @csrf
 <input name='boardName'type='text' placeholder="Nom du tableau">
 <input type='submit' value='+'>
