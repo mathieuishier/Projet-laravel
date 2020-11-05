@@ -18,7 +18,9 @@
  {{-- <a href="@route(board.[$todo->todoName])"> --}}
  {{-- <a href="@route('task', [ Auth::user()->name, $todo->tododName ] )"> --}}
    <h5 class="card-title">{{ $todo->todoName }}</h5>
-   <input type="text">
+   {{-- <form  method="post" action="@route('task.store',[ Auth::user()->name,$boardId])">
+   <input type="text" name="taskName">
+   </form> --}}
 {{-- </a> --}}
 
 @endforeach
