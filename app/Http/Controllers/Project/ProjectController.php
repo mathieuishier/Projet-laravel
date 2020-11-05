@@ -4,20 +4,27 @@ namespace App\Http\Controllers\Project;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\User;
-use App\Board;
+// use App\User;
+// use App\Board;
 use App\Todo;
-use Illuminate\Support\Facades\Auth;        // Need for get user login
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+     // Need for get user login
 
 class ProjectController extends Controller
 {
     // COS VERSION
     public function index($connect, $boardId)
     {
-        return view ('project.project', ['boardId'=>$boardId]);
 
+     $myTodo = DB::table('todos')->where('boardLink', $boardId)->get();
+
+    //  dd($myTodo);
+
+        return view ('project.project', ['boardId'=>$boardId,"myTodo"=>$myTodo]);
+    
         //CED VERSION
-        // return view ('project.project', ["todos"=>Todo::all()->where(Board::where('boarId',$boardId))] );
+        // return view ('project.project', ["todos"=>Todo::all()->where(Board::'boarId',$boardId))] );
 
     }
 

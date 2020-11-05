@@ -9,14 +9,14 @@
 </form>
 
 <p>{{ $boardId }}</p>
-{{-- @foreach ($boards as $b)
+@foreach ($myTodo as $todo)
 
- <a href="@route(board.[$b->boardName])">
- <a href="@route('project', [ Auth::user()->name, $b->boardName ] )">
-   <h5 class="card-title">{{ $b->boardName }}</h5>
-</a>
+ {{-- <a href="@route(board.[$todo->todoName])"> --}}
+ {{-- <a href="@route('project', [ Auth::user()->name, $todo->tododName ] )"> --}}
+   <h5 class="card-title">{{ $todo->todoName }}</h5>
+{{-- </a> --}}
 
-@endforeach --}}
+@endforeach
 
 @endsection
 
