@@ -17,12 +17,12 @@ class ProjectController extends Controller
     public function index($connect, $boardId)
     {
 
-     $myTodo = DB::table('todos')->where('boardLink', $boardId)->get();
+        $myTodo = DB::table('todos')->where('boardLink', $boardId)->get();
 
     //  dd($myTodo);
 
         return view ('project.project', ['boardId'=>$boardId,"myTodo"=>$myTodo]);
-    
+
         //CED VERSION
         // return view ('project.project', ["todos"=>Todo::all()->where(Board::'boarId',$boardId))] );
 

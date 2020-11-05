@@ -14,16 +14,24 @@ Route::get('/home', 'HomeController@index')->name('home');
 // Route::get('/board/{boardname}, 'Board\BoardController@index')->middleware('auth')->name('board');
 
 Route::prefix('{id}')->middleware('auth')->group(function () {
-    Route::get('/board', 'Board\BoardController@index')
+        // DASHBOARD : Meta View: all(my and share) & Create
+    Route::get('/dashboards', 'Board\BoardController@index')
         ->name('board');
-    Route::post('/board', 'Board\BoardController@store')
+    Route::post('/dashboards', 'Board\BoardController@store')
         ->name('board.store');
 
+        // View 1 & Set Tasks
     Route::prefix('board')->group(function () {
         Route::get('/{boardId}', 'Project\ProjectController@index')
             ->name('project');
         Route::post('/{boardId}', 'Project\ProjectController@store')
             ->name('project.store');
+
+            // Create & Set Task
+        Route::get('{todoId}', 'Todo\ProjectController@index')
+            ->name('todo');
+        Route::post('{todoId}', 'Todo\ProjectController@store')
+            ->name('todo.store');
     });
 
     // Route::get('/profile','Profile\ProfileController@index')
@@ -34,11 +42,11 @@ Route::prefix('{id}')->middleware('auth')->group(function () {
 
 
 
-Route::get('/{id}/board/{todoId}', 'Todo\ProjectController@index')
-    ->middleware('auth')
-    ->name('todo');
-Route::post('/{id}/board/{todoId}', 'Todo\ProjectController@store')
-    ->name('todo.store');
+// Route::get('/{id}/board/{todoId}', 'Todo\ProjectController@index')
+//     ->middleware('auth')
+//     ->name('todo');
+// Route::post('/{id}/board/{todoId}', 'Todo\ProjectController@store')
+//     ->name('todo.store');
 
 // Route pour afficher la vue contenant le profil
 Route::get('/prof', 'ProfController@index')->name('prof');
