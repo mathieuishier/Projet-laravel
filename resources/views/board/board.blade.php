@@ -12,7 +12,7 @@
 
 @foreach ($boards as $b)
 
-<a href="@route('project', [ Auth::user()->name, $b->id ] )">
+<a href="@route('todo', [ Auth::user()->name, $b->id ] )">
    <h5 class="card-title">{{ $b->boardName }}</h5>
 </a>
 

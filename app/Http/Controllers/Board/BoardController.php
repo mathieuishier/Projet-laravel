@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Board;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;        // Need for get user login
 use Illuminate\Http\Request;
 use App\Board;
-use\Closure;
-use Illuminate\Support\Facades\Auth;        // Need for get user login
+use \Closure;
 
 // use Illuminate\Support\Facades\DB;
 //   $board->ownerId=DB::table('users')->select('id')->get();

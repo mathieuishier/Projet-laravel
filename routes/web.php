@@ -14,24 +14,24 @@ Route::get('/home', 'HomeController@index')->name('home');
 // Route::get('/board/{boardname}, 'Board\BoardController@index')->middleware('auth')->name('board');
 
 Route::prefix('{id}')->middleware('auth')->group(function () {
-        // DASHBOARD : Meta View: all(my and share) & Create
-    Route::get('/dashboards', 'Board\BoardController@index')
+        // DASHBOARD :  Meta View: manage all Todos (my and share)
+    Route::get('/dashboard', 'Board\BoardController@index')
         ->name('board');
-    Route::post('/dashboards', 'Board\BoardController@store')
+    Route::post('/dashboard', 'Board\BoardController@store')
         ->name('board.store');
 
-        // View 1 & Set Tasks
-    Route::prefix('board')->group(function () {
-        Route::get('/{boardId}', 'Project\ProjectController@index')
-            ->name('project');
-        Route::post('/{boardId}', 'Project\ProjectController@store')
-            ->name('project.store');
-
-            // Create & Set Task
-        Route::get('{todoId}', 'Todo\ProjectController@index')
+        Route::prefix('board/{boardId}')->group(function () {
+            // Manage 1 Todo
+        Route::get('/', 'Todo\TodoController@index')
             ->name('todo');
-        Route::post('{todoId}', 'Todo\ProjectController@store')
+        Route::post('/', 'Todo\TodoController@store')
             ->name('todo.store');
+
+            // Manage Tasks
+        Route::get('{todoId}', 'Task\TaskController@index')
+            ->name('task');
+        Route::post('{todoId}', 'Task\TaskController@store')
+            ->name('task.store');
     });
 
     // Route::get('/profile','Profile\ProfileController@index')
@@ -42,10 +42,10 @@ Route::prefix('{id}')->middleware('auth')->group(function () {
 
 
 
-// Route::get('/{id}/board/{todoId}', 'Todo\ProjectController@index')
+// Route::get('/{id}/board/{todoId}', 'Todo\TodoController@index')
 //     ->middleware('auth')
 //     ->name('todo');
-// Route::post('/{id}/board/{todoId}', 'Todo\ProjectController@store')
+// Route::post('/{id}/board/{todoId}', 'Todo\TodoController@store')
 //     ->name('todo.store');
 
 // Route pour afficher la vue contenant le profil
