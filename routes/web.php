@@ -32,10 +32,6 @@ Route::prefix('{id}')->middleware('auth')->group(function () {
     //     ->name('profile.store');
 });
 
-
-
-
-
 Route::get('/{id}/board/{todoId}','Todo\ProjectController@index')
     ->middleware('auth')
     ->name('todo');

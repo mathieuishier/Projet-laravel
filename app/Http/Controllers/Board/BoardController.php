@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Board;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Board;
-
+use\Closure;
 use Illuminate\Support\Facades\Auth;        // Need for get user login
 
 // use Illuminate\Support\Facades\DB;
@@ -19,7 +19,7 @@ class BoardController extends Controller
         return view ('board.board', ["boards"=>Board::all()->where('ownerId', Auth::User()->id)] );
     }
 
-    public function store(Request $request, $id)
+    public function store(Request $request)
     {
         $board=new Board();                         // Step1 > Create
                                                     // Step2 > Loadin data

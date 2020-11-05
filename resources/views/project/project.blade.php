@@ -1,13 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-<form action="@route('todo.store', [ Auth::user()->name ])" method="post">
+<form  method="post">
+    {{-- a rajouter  action="@route('project.store',['board'=>$boardId])" --}}
 @csrf
 <input name='todoName'type='text' placeholder="Nom du ticket">
 <input type='submit' value='+'>
 </form>
 
-
+<p>{{ $boardId }}</p>
 {{-- @foreach ($boards as $b)
 
  <a href="@route(board.[$b->boardName])">
