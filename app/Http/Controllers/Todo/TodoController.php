@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Todo;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use App\Task;
 use App\Todo;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -14,11 +14,13 @@ class TodoController extends Controller
 {
     public function index($user, $boardId)
     {
+        $todoId=Todo::select('id')->get();
+
         $myTodo = DB::table('todos')->where('boardLink', $boardId)->get();
+        $myTask= DB::table('tasks')->where('todoLink',$todoId)->get();
 
-    //  dd($myTodo);
 
-        return view ('todo.todo', ['boardId'=>$boardId,"myTodo"=>$myTodo]);
+        return view ('todo.todo', ['boardId'=>$boardId,"myTodo"=>$myTodo,"myTask"=>$myTask]);
 
     }
 

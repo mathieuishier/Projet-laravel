@@ -8,9 +8,6 @@
 <input type='submit' value='+'>
 </form>
 
-
-
-
 <p>{{ $boardId }}</p>
 
 @foreach ($myTodo as $todo)
@@ -18,7 +15,15 @@
  {{-- <a href="@route(board.[$todo->todoName])"> --}}
  {{-- <a href="@route('task', [ Auth::user()->name, $todo->tododName ] )"> --}}
    <h5 class="card-title">{{ $todo->todoName }}</h5>
-   <input type="text">
+   <form  method="post" action="@route('task.store',[ Auth::user()->name,$boardId,$todo->todoName])">
+    @csrf
+   <input type="text" name="taskName">
+   <input type='submit' value='+'>
+   </form>
+
+   @foreach ($myTask as $task)
+   <h5 class="card-title">{{ $task->taskName }}</h5>
+   @endforeach
 {{-- </a> --}}
 
 @endforeach
