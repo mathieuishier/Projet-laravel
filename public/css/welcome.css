@@ -1,7 +1,7 @@
 body
 {
   margin: 0;
-  padding: 0;  
+  padding: 0;
 }
 section
 {
@@ -60,7 +60,7 @@ transform: rotateY(0deg);
 filter:blur(0px);
 
     }
-    
+
 }
 h1 span:nth-child(1)
 {
@@ -90,4 +90,8 @@ h1 span:nth-child(2)
 }h1 span:nth-child(9)
 {
     animation-delay: 5s;
+}
+
+a {
+    color : white;
 }
