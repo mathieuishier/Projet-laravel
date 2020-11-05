@@ -57,7 +57,8 @@
                                 search bar <input type='text' href="">
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="@route('{{Auth::user()->id}}/board')">mes tableaux</a>
+                                <a class="nav-link" href="@route('board', [ Auth::user()->name ] )">mes tableaux</a>
+                                {{-- <a class="nav-link" href="@route('{{Auth::user()->id}}/board')">mes tableaux</a> --}}
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="">profil</a>
