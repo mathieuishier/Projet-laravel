@@ -18,18 +18,15 @@ class TaskController extends Controller
     // }
 
 
-    public function store(Request $request, $user, $boardId,$todoId)
+    public function store(Request $request, $user, $boardId, $todoLink)
     {
-
             $tk = new Task();                         // Step1 > Create
                                                     // Step2 > Loadin data
             $tk->ownerId = Auth::User()->id;         //  from user login
-            $tk->taskName=$request->taskName;
             $tk->taskContent=$request->taskContent;
-            $tk->todoLink=$todoId;
+            $tk->todoLink=$todoLink;
 
             $tk->save();                             // Step3 > Push in Table
-
             return back();
         }
 

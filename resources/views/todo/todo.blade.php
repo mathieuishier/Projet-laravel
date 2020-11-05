@@ -12,19 +12,21 @@
 
 @foreach ($myTodo as $todo)
 
- {{-- <a href="@route(board.[$todo->todoName])"> --}}
- {{-- <a href="@route('task', [ Auth::user()->name, $todo->tododName ] )"> --}}
    <h5 class="card-title">{{ $todo->todoName }}</h5>
-   <form  method="post" action="@route('task.store',[ Auth::user()->name,$boardId,$todo->todoName])">
+
+   @foreach ($myTask as $task)
+   @if ($task->todoLink == $todo->id)
+   <h5 class="card-title">{{ $task->taskContent }}</h5>
+   @endif
+   @endforeach
+
+   <form  method="get" action="@route('task.store',[ Auth::user()->name,$boardId,$todo->id])">
     @csrf
-   <input type="text" name="taskName">
+   <input type="text" name="taskContent">
+   {{-- <input type="hidden" name="todoLink" value={{$todo->id}}> --}}
    <input type='submit' value='+'>
    </form>
 
-   @foreach ($myTask as $task)
-   <h5 class="card-title">{{ $task->taskName }}</h5>
-   @endforeach
-{{-- </a> --}}
 
 @endforeach
 
