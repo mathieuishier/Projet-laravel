@@ -1,14 +1,22 @@
 @extends('layouts.app')
 
 @section('content')
-<form  method="post">
-    {{-- a rajouter  action="@route('task.store',['board'=>$boardId])" --}}
+
+<form  method="post" action="@route('todo.store', 'param' = ['user' => Auth::user()->name, 'board'=>$boardId] ">
+ {{-- action="@route('todo.store',['user' => Auth::user()->name, 'board'=>$boardId])"  'param' => []  --}}
+
 @csrf
+
 <input name='todoName'type='text' placeholder="New todo (ticket)">
 <input type='submit' value='+'>
+
 </form>
 
+
+
+
 <p>{{ $boardId }}</p>
+
 @foreach ($myTodo as $todo)
 
  {{-- <a href="@route(board.[$todo->todoName])"> --}}
@@ -16,8 +24,26 @@
    <h5 class="card-title">{{ $todo->todoName }}</h5>
 {{-- </a> --}}
 
-
 @endforeach
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <!-- Button trigger modal -->

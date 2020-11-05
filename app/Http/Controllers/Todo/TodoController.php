@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\DB;
 
 class TodoController extends Controller
 {
-    public function index($connect, $boardId)
+    public function index($user, $boardId)
     {
         $myTodo = DB::table('todos')->where('boardLink', $boardId)->get();
 

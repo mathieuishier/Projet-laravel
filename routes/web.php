@@ -28,8 +28,8 @@ Route::prefix('{id}')->middleware('auth')->group(function () {
             ->name('todo.store');
 
             // Manage Tasks
-        Route::get('{todoId}', 'Task\TaskController@index')
-            ->name('task');
+        // Route::get('{todoId}', 'Task\TaskController@index')
+        //     ->name('task');
         Route::post('{todoId}', 'Task\TaskController@store')
             ->name('task.store');
     });

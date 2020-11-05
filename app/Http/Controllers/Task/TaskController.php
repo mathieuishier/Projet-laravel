@@ -12,10 +12,10 @@ use Illuminate\Support\Facades\Auth;        // Need for get user login
 
 class TaskController extends Controller
 {
-    public function index()
-    {
-        return view ('task.task');
-    }
+    // public function index()
+    // {
+    //     return view ('task.task');
+    // }
 
 
     public function store()
