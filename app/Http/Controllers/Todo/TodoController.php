@@ -20,9 +20,6 @@ class TodoController extends Controller
 
         return view ('todo.todo', ['boardId'=>$boardId,"myTodo"=>$myTodo]);
 
-        //CED VERSION
-        // return view ('todo.todo', ["todos"=>Todo::all()->where(Board::'boarId',$boardId))] );
-
     }
 
 

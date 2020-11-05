@@ -2,14 +2,10 @@
 
 @section('content')
 
-<form  method="post" action="@route('todo.store', 'param' = ['user' => Auth::user()->name, 'board'=>$boardId] ">
- {{-- action="@route('todo.store',['user' => Auth::user()->name, 'board'=>$boardId])"  'param' => []  --}}
-
+<form  method="post" action="@route('todo.store',[ Auth::user()->name,$boardId])">
 @csrf
-
 <input name='todoName'type='text' placeholder="New todo (ticket)">
 <input type='submit' value='+'>
-
 </form>
 
 
@@ -22,6 +18,7 @@
  {{-- <a href="@route(board.[$todo->todoName])"> --}}
  {{-- <a href="@route('task', [ Auth::user()->name, $todo->tododName ] )"> --}}
    <h5 class="card-title">{{ $todo->todoName }}</h5>
+   <input type="text">
 {{-- </a> --}}
 
 @endforeach
