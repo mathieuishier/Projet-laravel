@@ -10,6 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 use App\User;
 
 Route::get('/', function () {
@@ -29,9 +30,14 @@ Route::get('/home', 'HomeController@index')->name('home');
 // Route::get('/board', 'BoardController@index')->middleware('auth')->name('board');
 // Route::post('/board', 'BoardController@store')->name('board.store');
 
-Route::get('/{id}/board','Board\BoardController@index')
+Route::get('/{id}/board', 'Board\BoardController@index')
     ->middleware('auth')
     ->name('board');
-Route::post('/{id}/board','Board\BoardController@store')
+Route::post('/{id}/board', 'Board\BoardController@store')
     ->name('board.store');
 
+// Route pour afficher la vue contenant le profil
+Route::get('/prof', 'ProfController@index')->name('prof');
+
+// Route pour envoyer les informations dans la BDD User
+Route::post('/prof', 'ProfController@update')->name('prof.store');
