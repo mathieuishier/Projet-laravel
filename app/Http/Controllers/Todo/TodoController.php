@@ -17,8 +17,9 @@ class TodoController extends Controller
 
         $myTodo = DB::table('todos')->where('boardLink', $boardId)->get();
         $myTask= DB::table('tasks')->get();
-
-        return view ('todo.todo', ['boardId'=>$boardId,"myTodo"=>$myTodo,"myTask"=>$myTask]);
+        $myComment= DB::table('comments')->get();
+        
+        return view ('todo.todo', ['boardId'=>$boardId,"myTodo"=>$myTodo,"myTask"=>$myTask,"myComment"=>$myComment]);
 
     }
 

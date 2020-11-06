@@ -9,14 +9,10 @@
         </div>
         <form  method="post" action="@route("comment.store",[Auth::user()->name,$boardId,$task->id])">
             @csrf
+            @method('PUT')
             <div class="modal-body">
-
                     <input name="comment" type="text" placeholder="laissez un commentaire">
-
-            </div>
-            <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">commenter</button>
+                    <input type='submit' value='+'>
             </div>
         </form>
       </div>
