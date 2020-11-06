@@ -14,16 +14,26 @@ Route::get('/home', 'HomeController@index')->name('home');
 // Route::get('/board/{boardname}, 'Board\BoardController@index')->middleware('auth')->name('board');
 
 Route::prefix('{id}')->middleware('auth')->group(function () {
-    Route::get('/board', 'Board\BoardController@index')
+        // DASHBOARD :  Meta View: manage all Todos (my and share)
+    Route::get('/dashboard', 'Board\BoardController@index')
         ->name('board');
-    Route::post('/board', 'Board\BoardController@store')
+    Route::post('/dashboard', 'Board\BoardController@store')
         ->name('board.store');
 
-    Route::prefix('board')->group(function () {
-        Route::get('/{boardId}', 'Project\ProjectController@index')
-            ->name('project');
-        Route::post('/{boardId}', 'Project\ProjectController@store')
-            ->name('project.store');
+        Route::prefix('board/{boardId}')->group(function () {
+            // Manage 1 Todo
+        Route::get('/', 'Todo\TodoController@index')
+            ->name('todo');
+        Route::post('/', 'Todo\TodoController@store')
+            ->name('todo.store');
+
+            // Manage Tasks
+        // Route::get('{todoId}', 'Task\TaskController@index')
+        //     ->name('task');
+        Route::post('{todoId}', 'Task\TaskController@store')
+            ->name('task.store');
+        Route::put('{taskId}', 'Comment\CommentController@store')
+            ->name('comment.store');
     });
 
     // Route::get('/profile','Profile\ProfileController@index')
@@ -34,11 +44,11 @@ Route::prefix('{id}')->middleware('auth')->group(function () {
 
 
 
-Route::get('/{id}/board/{todoId}', 'Todo\ProjectController@index')
-    ->middleware('auth')
-    ->name('todo');
-Route::post('/{id}/board/{todoId}', 'Todo\ProjectController@store')
-    ->name('todo.store');
+// Route::get('/{id}/board/{todoId}', 'Todo\TodoController@index')
+//     ->middleware('auth')
+//     ->name('todo');
+// Route::post('/{id}/board/{todoId}', 'Todo\TodoController@store')
+//     ->name('todo.store');
 
 // Route for display the view of profile User
 Route::get('/prof', 'ProfController@index')->name('prof');

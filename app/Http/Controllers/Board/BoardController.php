@@ -3,10 +3,9 @@
 namespace App\Http\Controllers\Board;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;        // Need for get user login
 use Illuminate\Http\Request;
 use App\Board;
-use\Closure;
-use Illuminate\Support\Facades\Auth;        // Need for get user login
 
 // use Illuminate\Support\Facades\DB;
 //   $board->ownerId=DB::table('users')->select('id')->get();
@@ -21,10 +20,16 @@ class BoardController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate(
+            [
+                'boardName' => 'required',
+            ]);
+
         $board=new Board();                         // Step1 > Create
-                                                    // Step2 > Loadin data
+                                              // Step2 > Loadin data
         $board->ownerId = Auth::User()->id;         //  from user login
         $board->boardName=$request->boardName;
+        $board->background=$request->background;
 
         $board->save();                             // Step3 > Push in Table
 
