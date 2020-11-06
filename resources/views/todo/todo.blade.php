@@ -1,12 +1,30 @@
 @extends('layouts.app')
+<style>
+    .clignote{
+        color:red;
+        animation: clignote 2s linear infinite;
 
+    }
+    @keyframes clignote {
+    50% { opacity: 0; }
+    }
+    </style>
 @section('content')
 
 <form  method="post" action="@route('todo.store',[ Auth::user()->name,$boardId])">
 @csrf
+@if($errors->any())
+@foreach ($errors->all() as $e)
+<h3 class="clignote">{{ $e }}</h3>
+@endforeach
+@endif
 <input name='todoName'type='text' placeholder="New todo (ticket)">
 <input type='submit' value='+'>
 </form>
+
+<button name="background1" value="yellow">jaune</button>
+    <button name="background1" value="green">vert</button>
+        <button name="background1" value="blue">bleu</button>
 
 {{-- <p>{{ $boardId }}</p> --}}
 <section class="container">
@@ -20,7 +38,7 @@
                     <h5 class="card-title">{{ $task->taskContent }}</h5>
 
 
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                         Commentaire
                     </button>
 
@@ -33,7 +51,7 @@
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
-                            </div>
+                            </div> --}}
 
                             @foreach ($myComment as $com)
                             @if ($com->taskLink == $task->id)
@@ -48,21 +66,21 @@
                             <form  method="post" action="@route("comment.store",[Auth::user()->name,$boardId,$task->id])">
                                 @csrf
                                 @method('PUT')
-                                <div class="modal-body">
+                         <div>       {{-- <div class="modal-body"> --}}
                                         <input name="comment" type="text" placeholder="laissez un commentaire">
                                         <input type='submit' value='+'>
                                 </div>
                             </form>
+                        {{-- </div>
                         </div>
-                        </div>
-                    </div>
+                    </div> --}}
                 </div>
                 @endif
                 @endforeach
 
    <form  method="post" action="@route('task.store',[ Auth::user()->name,$boardId,$todo->id])">
     @csrf
-   <input type="text" name="taskContent">
+   <input type="text" name="taskContent"  placeholder="nouvelle tache">
    <input type='submit' value='+'>
    </form>
 

@@ -20,10 +20,16 @@ class BoardController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate(
+            [
+                'boardName' => 'required',
+            ]);
+
         $board=new Board();                         // Step1 > Create
                                                     // Step2 > Loadin data
         $board->ownerId = Auth::User()->id;         //  from user login
         $board->boardName=$request->boardName;
+        $board->background=$request->background;
 
         $board->save();                             // Step3 > Push in Table
 

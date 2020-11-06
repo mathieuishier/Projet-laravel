@@ -20,6 +20,11 @@ class TaskController extends Controller
 
     public function store(Request $request, $user, $boardId, $todoLink)
     {
+        $request->validate(
+            [
+                'taskContent' => 'required',
+            ]);
+
             $tk = new Task();                         // Step1 > Create
                                                     // Step2 > Loadin data
             $tk->ownerId = Auth::User()->id;         //  from user login

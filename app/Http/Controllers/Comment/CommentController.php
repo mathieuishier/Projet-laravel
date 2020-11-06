@@ -19,6 +19,11 @@ class CommentController extends Controller
 
     public function store(Request $request, $user, $boardId, $taskLink)
     {
+        $request->validate(
+            [
+                'comment' => 'required',
+            ]);
+            
             $com = new Comment();                         // Step1 > Create
                                                     // Step2 > Loadin data
             $com->ownerId = Auth::User()->id;         //  from user login
