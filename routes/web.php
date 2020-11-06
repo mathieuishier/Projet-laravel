@@ -40,8 +40,11 @@ Route::get('/{id}/board/{todoId}', 'Todo\ProjectController@index')
 Route::post('/{id}/board/{todoId}', 'Todo\ProjectController@store')
     ->name('todo.store');
 
-// Route pour afficher la vue contenant le profil
+// Route for display the view of profile User
 Route::get('/prof', 'ProfController@index')->name('prof');
 
-// Route pour envoyer les informations dans la BDD User
-Route::post('/prof', 'ProfController@update')->name('prof.store');
+// Route for update the view of profile User
+Route::post('/prof', 'ProfController@store')->name('prof.store');
+
+// Route for update the view of profile User
+Route::post('/prof', 'ProfController@update')->name('prof.update');

@@ -61,7 +61,7 @@
                                 {{-- <a class="nav-link" href="@route('{{Auth::user()->id}}/board')">mes tableaux</a> --}}
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="">profil</a>
+                                <a class="nav-link" href="{{ route('prof') }}">profil</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

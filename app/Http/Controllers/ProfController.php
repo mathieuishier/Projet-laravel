@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class ProfController extends Controller
 {
+
+
     /**
      * Afficher la vue contenant le formulaire.
      *
@@ -16,13 +19,47 @@ class ProfController extends Controller
     public function index()
     {
 
-        $var = "mathieu";
-        $prof = User::select(['name'])->where('name', $var)->first();
-        $name = $prof->name;
-        // dd($name);
+        $id = Auth::user()->id;
+        $prof = User::all()->where('id', $id)->first();
         return view('prof.index', [
-            'name' => $name,
+            'profil' => $prof,
         ]);
+    }
+
+    /**
+     * Store a new blog post.
+     *
+     * @param  Request  $request
+     * @return Response
+     */
+    public function update(Request $request)
+    {
+        // $var = "Hello";
+        // dd($var);
+
+        // Validate and store the blog post...
+        $validatedData = $request->validate([
+            'firstname' => ['required', 'string', 'max:10'],
+            'address' => ['required', 'string', 'max:10'],
+            'city' => ['required', 'string', 'max:10'],
+            'postalcd' => ['required', 'string', 'max:10'],
+            'phone' => ['required', 'integer', 'max:10'],
+        ]);
+
+        $id = Auth::user()->id;
+        $prof = User::all()->where('id', $id)->first();
+        $name = $prof->name;
+        $email = $prof->email;
+        $prof->firstname = $request->firstname;
+        $prof->birthday = $request->birthday;
+        // dd($prof->birthday);
+        $prof->address = $request->address;
+        $prof->city = $request->city;
+        $prof->postalcd = $request->postalcd;
+        $prof->phone = $request->phone;
+        $prof->save();
+
+        return back();
     }
 
     /**
@@ -33,10 +70,20 @@ class ProfController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      */
 
-    public function update(Request $request, $name)
+    public function store(Request $request)
     {
-        $prof = User::select(['id', 'email'])->where('name', $name)->first();
+
+        $id = Auth::user()->id;
+        $prof = User::all()->where('id', $id)->first();
+        $name = $prof->name;
+        $email = $prof->email;
         $prof->firstname = $request->firstname;
+        $prof->birthday = $request->birthday;
+        // dd($prof->birthday);
+        $prof->address = $request->address;
+        $prof->city = $request->city;
+        $prof->postalcd = $request->postalcd;
+        $prof->phone = $request->phone;
         $prof->save();
 
         return back();
