@@ -9,6 +9,7 @@
     50% { opacity: 0; }
     }
     </style>
+
 @section('content')
 
 <form  method="post" action="@route('todo.store',[ Auth::user()->name,$boardId])">
@@ -27,7 +28,12 @@
         <button name="background1" value="blue">bleu</button>
 
 {{-- <p>{{ $boardId }}</p> --}}
-<section class="container">
+@foreach ($boards as $b)
+    <style>.stx-background{background-image: url(../assets/background/{{ $b->background }})}</style>
+    @endforeach
+<section class="container  ">
+
+
     <div class="row">
             @foreach ($myTodo as $todo)
         <div class="col-3">
@@ -88,6 +94,7 @@
             @endforeach
     </div>
 </section>
+
 @endsection
 
 

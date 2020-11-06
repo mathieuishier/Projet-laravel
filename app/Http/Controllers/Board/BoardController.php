@@ -26,7 +26,7 @@ class BoardController extends Controller
             ]);
 
         $board=new Board();                         // Step1 > Create
-                                                    // Step2 > Loadin data
+                                              // Step2 > Loadin data
         $board->ownerId = Auth::User()->id;         //  from user login
         $board->boardName=$request->boardName;
         $board->background=$request->background;

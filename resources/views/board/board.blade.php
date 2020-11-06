@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+
+
 @section('content')
 
 
@@ -12,8 +14,10 @@
 <form action="@route('board.store', [ Auth::user()->name ])" method="post">
 @csrf
 <input name='boardName'type='text' placeholder="Nom du tableau">
-<select>
-    <option value="background"></option>;
+<select name="background">
+    <option  style="background-image:url(../assets/background/clair.jpg);" value="clair.jpg">background 1</option>;
+    <option  style="background-image:url(../assets/background/color.jpg);" value="color.jpg">background 2</option>;
+    <option  style="background-image:url(../assets/background/lien.jpg);" value="lien.jpg">background 3</option>;
 </select>
 <input type='submit' value='+'>
 </form>
@@ -24,8 +28,8 @@
 
 <div class=col-3>
     <a href="@route('todo', [ Auth::user()->name, $b->id ] )">
-    <div class="card bg-dark text-white">
-        <img src="assets/background/{{ $b->background }}" class="card-img" alt="screen dashboard">
+    <div class="card text-white">
+        <img src="../assets/background/{{ $b->background }}" class="card-img" alt="screen dashboard">
         <div class="card-img-overlay">
             <h5 class="card-title">{{ $b->boardName }}</h5>
         </div>

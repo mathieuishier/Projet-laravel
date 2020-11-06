@@ -17,6 +17,7 @@ class CreateBoardsTable extends Migration
             $table->bigIncrements('id');
             $table->text('boardName');
             $table->integer('ownerId');
+            $table->text('background');
             // $table->set('shareId',[])->nullable();
             $table->timestamps();
         });
