@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Task;
 use App\Todo;
+use App\Comment;
 use Illuminate\Support\Facades\Auth;
 // use Illuminate\Support\Facades\DB;
      // Need for get user login
@@ -22,15 +23,16 @@ class TodoController extends Controller
         // $myComment= DB::table('comments')->get();
 
 
+
         $myTodo = Todo::where('boardLink', $boardId)->get();            // apres le Get >> Collection
-        $myTask= Task::all()->get();
-        $myComment= Comment::all()->get();
+        $myTask=  Task::all();
+        $myComment= Comment::all();
 
         return view ('todo', ['boardId'=>$boardId,"myTodo"=>$myTodo,"myTask"=>$myTask,"myComment"=>$myComment]);
 
     }
 
-    public function store(Request $request, $user, $boardId)
+    public function store(Request $request, $boardId)
     {
 
         $request->validate(

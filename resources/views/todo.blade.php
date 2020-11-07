@@ -5,7 +5,7 @@
 @section('content')
 
 {{-- <form  method="post" action="@route('todo.store',[ Auth::user()->name,$boardId])"> --}}
-<form  method="post" action="@route('todo.store')">
+<form  method="post" action="@route('todo.store',[$boardId])">
 @csrf
 @if($errors->any())
 @foreach ($errors->all() as $e)
@@ -30,6 +30,7 @@
         <div class="col-3 stx-cards">
             <h5 class="card-title stx-cards-todo">{{ $todo->todoName }}</h5>
                 @foreach ($myTask as $task)
+
                 @if ($task->todoLink == $todo->id)
                 <div class="row justify-content-around">
                     <h5>{{ $task->taskContent }}</h5>
@@ -47,7 +48,7 @@
                     @endif
                     @endforeach
                     <div class="row justify-content-center">
-                    <form  method="post" action="@route("comment.store",[Auth::user()->name,$boardId,$task->id])">
+                    <form  method="post" action="@route("comment.store",[$task->id])">
                         @csrf
                         @method('PUT')
                         <div>
@@ -61,7 +62,7 @@
                 @endforeach
 
                 {{-- <form  method="post" action="@route('task.store',[ Auth::user()->name,$boardId,$todo->id])"> --}}
-                <form  method="post" action="@route('task.store',[ Auth::user()->name,$boardId,$todo->id])">
+                <form  method="post" action="@route('task.store',[$todo->id])">
                     @csrf
                 <input type="text" name="taskContent"  placeholder="nouvelle tache">
                 <input type='submit' value='+'>
