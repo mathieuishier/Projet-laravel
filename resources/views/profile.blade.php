@@ -9,7 +9,7 @@
                 <div class="card-header">{{ __('Profil') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('prof') }}">
+                    <form method="POST" action="{{ route('profile') }}">
                         @csrf
 {{-- name			en:name         fr:Nom --}}
 <div class="form-group row">
@@ -39,7 +39,7 @@
 </div>
 {{-- firstname		en:firstname        fr:Prénom --}}
 <div class="form-group row">
-    <label for="firstname" class="col-md-4 col-form-label text-md-right">{{ __('firstname') }}</label>
+    <label for="firstname" class="col-md-4 col-form-label text-md-right">{{ __('Prénom') }}</label>
     <div class="col-md-6">
         <input id="firstname" type="text" class="form-cont0rol @error('firstname') is-invalid @enderror" name="firstname" value="{{ $profil->firstname }}" required autocomplete="firstname">
 
@@ -52,7 +52,7 @@
 </div>
 {{-- birthday		    en:Date of Birth     fr:Date de naissance --}}
 <div class="form-group row">
-    <label for="birthday" class="col-md-4 col-form-label text-md-right">{{ __('Date of Birth') }}</label>
+    <label for="birthday" class="col-md-4 col-form-label text-md-right">{{ __('Date de naissance') }}</label>
     <div class="col-md-6">
         <input id="birthday" type="text" class="form-cont0rol @error('birthday') is-invalid @enderror" name="birthday" value="{{ $profil->birthday }}" required autocomplete="birthday">
 
@@ -65,7 +65,7 @@
 </div>
 {{-- address		en:address fr:Adresse --}}
 <div class="form-group row">
-    <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('address') }}</label>
+    <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('Adresse') }}</label>
     <div class="col-md-6">
         <input id="address" type="text" class="form-cont0rol @error('address') is-invalid @enderror" name="address" value="{{ $profil->address }}" required autocomplete="address">
 
@@ -78,7 +78,7 @@
 </div>
 {{-- city 			en:city     fr:Ville --}}
 <div class="form-group row">
-    <label for="city" class="col-md-4 col-form-label text-md-right">{{ __('City') }}</label>
+    <label for="city" class="col-md-4 col-form-label text-md-right">{{ __('Ville') }}</label>
     <div class="col-md-6">
         <input id="city" type="text" class="form-cont0rol @error('city') is-invalid @enderror" name="city" value="{{ $profil->city }}" required autocomplete="city">
 
@@ -91,7 +91,7 @@
 </div>
 {{-- phone		en:Postal code      fr:Code Postal          --}}
 <div class="form-group row">
-    <label for="postalcd" class="col-md-4 col-form-label text-md-right">{{ __('Postal code') }}</label>
+    <label for="postalcd" class="col-md-4 col-form-label text-md-right">{{ __('Code Postal') }}</label>
     <div class="col-md-6">
         <input id="postalcd" type="text" class="form-cont0rol @error('postalcd') is-invalid @enderror" name="postalcd" value="{{ $profil->postalcd }}" required autocomplete="postalcd">
 
@@ -104,7 +104,7 @@
 </div>
 {{-- phone			en:Phone number     fr:Numéro de Téléphone  --}}
 <div class="form-group row">
-    <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Phone number') }}</label>
+    <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Numéro de Téléphone') }}</label>
     <div class="col-md-6">
         <input id="phone" type="text" class="form-cont0rol @error('phone') is-invalid @enderror" name="phone" value="{{ $profil->phone }}" required autocomplete="phone">
 
@@ -119,14 +119,18 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    {{ __('profil') }}
+                                    {{ __('modifier') }}
+
                                 </button>
                             </div>
                         </div>
                     </form>
                 </div>
+                <p>{{ $valider }}</p>
             </div>
         </div>
     </div>
 </div>
 @endsection
+
+
