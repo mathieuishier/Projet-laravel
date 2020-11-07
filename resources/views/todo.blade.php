@@ -32,9 +32,6 @@
 <input type='submit' value='+'>
 </form>
 
-<button name="background1" value="yellow">jaune</button>
-    <button name="background1" value="green">vert</button>
-        <button name="background1" value="blue">bleu</button>
 
 {{-- <p>{{ $boardId }}</p> --}}
 {{-- @foreach ($boards as $b)
