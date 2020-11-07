@@ -10903,3 +10903,37 @@ a.text-dark:focus {
   }
 }
 
+.clignote {
+  color: red;
+  -webkit-animation: clignote 2s linear infinite;
+          animation: clignote 2s linear infinite;
+}
+
+@-webkit-keyframes clignote {
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes clignote {
+  50% {
+    opacity: 0;
+  }
+}
+
+.stx-cards {
+  border: 1px solid black;
+  margin: 0 20px 20px 20px;
+  padding: 0;
+  text-align: center;
+}
+
+.stx-cards-todo {
+  padding: 10px 0;
+  background-color: grey;
+}
+
+.stx-cards-task {
+  text-align: center;
+}
+

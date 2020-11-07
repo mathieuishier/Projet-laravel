@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Board;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;        // Need for get user login
@@ -15,7 +15,7 @@ class BoardController extends Controller
 {
     public function index()
     {
-        return view ('board.board', ["boards"=>Board::all()->where('ownerId', Auth::User()->id)] );
+        return view ('board', ["boards"=>Board::all()->where('ownerId', Auth::User()->id)] );
     }
 
     public function store(Request $request)
