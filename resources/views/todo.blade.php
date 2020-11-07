@@ -35,11 +35,16 @@
                 <div class="row justify-content-around">
                     <h5>{{ $task->taskContent }}</h5>
 
-                    <a data-toggle="collapse" href="#commentaires{{$task->id}}" role="button" aria-expanded="false" aria-controls="commentaires{{$task->id}}">
+                    {{-- <a data-toggle="collapse" href="#commentaires{{$task->id}}" --}}
+                    <a data-toggle="modal" href="#commentaires{{$task->id}}" role="button" aria-expanded="false" aria-controls="commentaires{{$task->id}}">
                         <img width="25px;" src=@asset("../assets/comment.png") alt="commentaires">
                     </a>
                 </div>
-                <div class="collapse" id="commentaires{{$task->id}}">
+
+
+                @include('task')
+
+                {{-- <div class="collapse" id="commentaires{{$task->id}}">
                     @foreach ($myComment as $com)
                     @if ($com->taskLink == $task->id)
                     <div class="row justify-content-center ">
@@ -57,7 +62,7 @@
                         </div>
                     </form>
                     </div>
-                </div>
+                </div> --}}
                 @endif
                 @endforeach
 
