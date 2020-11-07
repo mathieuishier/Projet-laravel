@@ -7,7 +7,8 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form  method="post" action="@route("comment.store",[Auth::user()->name,$boardId,$task->id])">
+        {{-- <form  method="post" action="@route("comment.store",[Auth::user()->name,$boardId,$task->id])"> --}}
+        <form  method="post" action="@route("comment.store")">
             @csrf
             @method('PUT')
             <div class="modal-body">

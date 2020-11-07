@@ -12,7 +12,8 @@
 
 @section('content')
 
-<form  method="post" action="@route('todo.store',[ Auth::user()->name,$boardId])">
+{{-- <form  method="post" action="@route('todo.store',[ Auth::user()->name,$boardId])"> --}}
+<form  method="post" action="@route('todo.store')">
 @csrf
 @if($errors->any())
 @foreach ($errors->all() as $e)
@@ -28,9 +29,9 @@
         <button name="background1" value="blue">bleu</button>
 
 {{-- <p>{{ $boardId }}</p> --}}
-@foreach ($boards as $b)
+{{-- @foreach ($boards as $b)
     <style>.stx-background{background-image: url(../assets/background/{{ $b->background }})}</style>
-    @endforeach
+    @endforeach --}}
 <section class="container  ">
 
 
@@ -44,7 +45,7 @@
                     <h5 class="card-title">{{ $task->taskContent }}</h5>
 
 
-                    {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                         Commentaire
                     </button>
 
@@ -57,34 +58,39 @@
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
-                            </div> --}}
+                            </div>
 
                             @foreach ($myComment as $com)
-                            @if ($com->taskLink == $task->id)
 
-                            <h5>{{ $com->comment }}</h5>
+                            <br>{{ $com->taskLink .'-'. $task->id }}<br>
+                                @if ($com->taskLink == $task->id)
 
 
-                            @endif
+                                    <h5>{{ $com->comment }}</h5>
+
+
+                                @endif
                             @endforeach
 
 
-                            <form  method="post" action="@route("comment.store",[Auth::user()->name,$boardId,$task->id])">
+                            {{-- <form  method="post" action="@route("comment.store", [Auth::user()->name, $boardId,$task->id] )"> --}}
+                            <form  method="post" action="@route("comment.store")">
                                 @csrf
                                 @method('PUT')
-                         <div>       {{-- <div class="modal-body"> --}}
+                         {{-- <div>--}}       <div class="modal-body">
                                         <input name="comment" type="text" placeholder="laissez un commentaire">
                                         <input type='submit' value='+'>
                                 </div>
                             </form>
-                        {{-- </div>
                         </div>
-                    </div> --}}
+                        </div>
+                    </div>
                 </div>
                 @endif
                 @endforeach
 
-   <form  method="post" action="@route('task.store',[ Auth::user()->name,$boardId,$todo->id])">
+   {{-- <form  method="post" action="@route('task.store',[ Auth::user()->name,$boardId,$todo->id])"> --}}
+   <form  method="post" action="@route('task.store')">
     @csrf
    <input type="text" name="taskContent"  placeholder="nouvelle tache">
    <input type='submit' value='+'>

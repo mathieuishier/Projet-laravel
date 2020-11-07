@@ -18,7 +18,7 @@ class TaskController extends Controller
     // }
 
 
-    public function store(Request $request, $user, $boardId, $todoLink)
+    public function store(Request $request, $boardId, $todoLink)
     {
         $request->validate(
             [
