@@ -1,6 +1,22 @@
 @extends('layouts.app')
+
+@foreach ($myBoard as $b)
+@if ($b->id == $boardId)
+@foreach ($myBackground as $bg)
+        @if ($b->background == $bg->id)
 <style>
+    .stx-bkground {
+        background-image: url("../../assets/background/{{ $bg->name }}.jpg");
+        background-size:cover;
+        width:100%;
+        height: 100%;
+
+    }
     </style>
+    @endif
+    @endforeach
+    @endif
+    @endforeach
 
 @section('content')
 

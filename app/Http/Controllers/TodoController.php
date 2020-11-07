@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use App\Task;
 use App\Todo;
 use App\Comment;
+use App\Background;
+use App\Board;
 use Illuminate\Support\Facades\Auth;
 // use Illuminate\Support\Facades\DB;
      // Need for get user login
@@ -22,13 +24,13 @@ class TodoController extends Controller
         // $myTask= DB::table('tasks')->get();
         // $myComment= DB::table('comments')->get();
 
-
-
+        $myBoard= Board::all();
         $myTodo = Todo::where('boardLink', $boardId)->get();            // apres le Get >> Collection
         $myTask=  Task::all();
         $myComment= Comment::all();
+        $myBackground= Background::all();
 
-        return view ('todo', ['boardId'=>$boardId,"myTodo"=>$myTodo,"myTask"=>$myTask,"myComment"=>$myComment]);
+        return view ('todo', ['boardId'=>$boardId,"myBoard"=>$myBoard,"myTodo"=>$myTodo,"myTask"=>$myTask,"myComment"=>$myComment,"myBackground"=>$myBackground]);
 
     }
 

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;        // Need for get user login
 use Illuminate\Http\Request;
 use App\Board;
+use App\background;
 
 // use Illuminate\Support\Facades\DB;
 //   $board->ownerId=DB::table('users')->select('id')->get();
@@ -15,7 +16,10 @@ class BoardController extends Controller
 {
     public function index()
     {
-        return view ('board', ["boards"=>Board::all()->where('ownerId', Auth::User()->id)] );
+
+        $myBackground=  Background::all();
+
+        return view ('board', ["boards"=>Board::all()->where('ownerId', Auth::User()->id),"myBackground"=>$myBackground] );
     }
 
     public function store(Request $request)
@@ -23,6 +27,7 @@ class BoardController extends Controller
         $request->validate(
             [
                 'boardName' => 'required',
+                'background' => 'required',
             ]);
 
         $board=new Board();                         // Step1 > Create

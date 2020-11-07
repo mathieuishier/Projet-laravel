@@ -14,26 +14,31 @@
 <form action="@route('board.store')" method="post">
 @csrf
 <input name='boardName'type='text' placeholder="Nom du tableau">
-<select name="background">
-    <option  style="background-image:url(../assets/background/clair.jpg);" value="clair.jpg">background 1</option>;
-    <option  style="background-image:url(../assets/background/color.jpg);" value="color.jpg">background 2</option>;
-    <option  style="background-image:url(../assets/background/lien.jpg);" value="lien.jpg">background 3</option>;
-</select>
+@foreach ($myBackground as $bg)
+    <input name ="background" type='radio' value="{{$bg->id}}.jpg"> <img width="40px" src="../assets/background/{{$bg->name}}.jpg">
+@endforeach
+
 <input type='submit' value='+'>
 </form>
 
 <section class='container'>
     <div class='row'>
 @foreach ($boards as $b)
+
 <div class=col-3>
     {{-- <a href="@route('todo', [ Auth::user()->name ] )"> --}}
     {{-- <a href="@route('todo', $b->id)"> --}}
     <a href="@route('todo', $b->id)">
     <div class="card text-white">
-        <img src="../assets/background/{{ $b->background }}" class="card-img" alt="screen dashboard">
+        @foreach ($myBackground as $bg)
+        @if ($b->background == $bg->id)
+        <img src="../assets/background/{{ $bg->name }}.jpg" class="card-img" alt="screen dashboard">
+        @endif
+        @endforeach
         <div class="card-img-overlay">
-            <h5 class="card-title">{{ $b->boardName }}</h5>
+            <h5 class="card-title text-center" style="color:black">{{ $b->boardName }}</h5>
         </div>
+
       </div>
     </a>
 </div>
