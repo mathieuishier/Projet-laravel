@@ -7,9 +7,18 @@
 <style>
     .stx-bkground {
         background-image: url("../../assets/background/{{ $bg->name }}.jpg");
+        /* background-attachment: scroll; */
+        /* background-attachment: fixed; */
+        /* background-attachment: local; */
+        /* background-attachment: fixed, scroll; */
+        background-repeat: no-repeat, repeat-y;
         background-size:cover;
         width:100%;
         height: 92%;
+    }
+    .cos-bg{
+        overflow: scroll;
+        height: 77vh;
     }
 </style>
     @endif
@@ -64,8 +73,8 @@
 {{-- @foreach ($boards as $b)
     <style>.stx-background{background-image: url(../assets/background/{{ $b->background }})}</style>
     @endforeach --}}
-<section class="container">
-    <div class="row">
+<section class="container-fluid cos-bg">
+    <div class="row d-flex flex-nowrap">
 
         @foreach ($myTodo as $todo)
         <div class="col-3 ">
