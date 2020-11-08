@@ -52,4 +52,13 @@ class BoardController extends Controller
         return back();
     }
 
+    public function update(Request $request, $edit_id)
+    {
+        // dd($edit_id);
+        // dd($request);
+        Board::where('user_id', Auth::user()->id)
+            ->update(['boardName' => $request->bName]);
+
+        return back();
+    }
 }

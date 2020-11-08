@@ -26,6 +26,8 @@ Date : {{ \Carbon\Carbon::now()->calendar() }}
         <div class=col-3>
             <a href="@route('todo', $b->id)">
             <div class="card text-white">
+                {{-- <div class="card-header">
+                </div> --}}
                 @foreach ($myBackground as $bg)
                 @if ($b->background == $bg->id)
                 <img src="../assets/background/{{ $bg->name }}.jpg" class="card-img" alt="screen dashboard">
@@ -35,8 +37,18 @@ Date : {{ \Carbon\Carbon::now()->calendar() }}
                     <form action="@route('board.destroy', $b->id)" method="POST">@csrf
                         <input type="submit" name="board_id" value="x" class="btn btn-danger btn-sm">
                     </form>
+
                     <h5 class="card-title text-center" style="color:black">{{ $b->boardName }}</h5>
+
+                    <form action="@route('board.update', $b->id)" method="POST">@csrf
+                        <input type="text" name="bName" value="{{$b->boardName}}">
+                        <input type="submit" name="board_id" value="edit" class="btn btn-warning btn-sm">
+                    </form>
+
                 </div>
+                <div class="card-footer text-muted">
+                    2 days ago
+                  </div>
             </div>
             </a>
         </div>

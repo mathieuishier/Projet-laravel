@@ -42,4 +42,12 @@ class TaskController extends Controller
         return back();
     }
 
+    public function update(Request $request, $edit_id)
+    {
+        $del = Task::find($edit_id);
+        $del->delete();
+
+        return back();
+    }
+
 }
