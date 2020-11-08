@@ -15,7 +15,7 @@
 <div class="form-group row">
     <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('name') }}</label>
     <div class="col-md-6">
-        <input id="name" type="text" class="form-cont0rol @error('name') is-invalid @enderror" name="name" value="{{ $profil->name }}" required autocomplete="name">
+        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $profil->name }}" required autocomplete="name">
 
         @error('name')
             <span class="invalid-feedback" role="alert">
@@ -41,7 +41,7 @@
 <div class="form-group row">
     <label for="firstname" class="col-md-4 col-form-label text-md-right">{{ __('Prénom') }}</label>
     <div class="col-md-6">
-        <input id="firstname" type="text" class="form-cont0rol @error('firstname') is-invalid @enderror" name="firstname" value="{{ $profil->firstname }}" required autocomplete="firstname">
+        <input id="firstname" type="text" class="form-control @error('firstname') is-invalid @enderror" name="firstname" value="{{ $profil->firstname }}" required autocomplete="firstname">
 
         @error('firstname')
             <span class="invalid-feedback" role="alert">
@@ -54,7 +54,7 @@
 <div class="form-group row">
     <label for="birthday" class="col-md-4 col-form-label text-md-right">{{ __('Date de naissance') }}</label>
     <div class="col-md-6">
-        <input id="birthday" type="text" class="form-cont0rol @error('birthday') is-invalid @enderror" name="birthday" value="{{ $profil->birthday }}" required autocomplete="birthday">
+        <input id="birthday" type="text" class="form-control @error('birthday') is-invalid @enderror" name="birthday" value="{{ $profil->birthday }}" required autocomplete="birthday">
 
         @error('birthday')
             <span class="invalid-feedback" role="alert">
@@ -67,7 +67,7 @@
 <div class="form-group row">
     <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('Adresse') }}</label>
     <div class="col-md-6">
-        <input id="address" type="text" class="form-cont0rol @error('address') is-invalid @enderror" name="address" value="{{ $profil->address }}" required autocomplete="address">
+        <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ $profil->address }}" required autocomplete="address">
 
         @error('address')
             <span class="invalid-feedback" role="alert">
@@ -80,7 +80,7 @@
 <div class="form-group row">
     <label for="city" class="col-md-4 col-form-label text-md-right">{{ __('Ville') }}</label>
     <div class="col-md-6">
-        <input id="city" type="text" class="form-cont0rol @error('city') is-invalid @enderror" name="city" value="{{ $profil->city }}" required autocomplete="city">
+        <input id="city" type="text" class="form-control @error('city') is-invalid @enderror" name="city" value="{{ $profil->city }}" required autocomplete="city">
 
         @error('city')
             <span class="invalid-feedback" role="alert">
@@ -93,7 +93,7 @@
 <div class="form-group row">
     <label for="postalcd" class="col-md-4 col-form-label text-md-right">{{ __('Code Postal') }}</label>
     <div class="col-md-6">
-        <input id="postalcd" type="text" class="form-cont0rol @error('postalcd') is-invalid @enderror" name="postalcd" value="{{ $profil->postalcd }}" required autocomplete="postalcd">
+        <input id="postalcd" type="text" class="form-control @error('postalcd') is-invalid @enderror" name="postalcd" value="{{ $profil->postalcd }}" required autocomplete="postalcd">
 
         @error('postalcd')
             <span class="invalid-feedback" role="alert">
@@ -106,7 +106,7 @@
 <div class="form-group row">
     <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Numéro de Téléphone') }}</label>
     <div class="col-md-6">
-        <input id="phone" type="text" class="form-cont0rol @error('phone') is-invalid @enderror" name="phone" value="{{ $profil->phone }}" required autocomplete="phone">
+        <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ $profil->phone }}" required autocomplete="phone">
 
         @error('phone')
             <span class="invalid-feedback" role="alert">

@@ -4,8 +4,8 @@
 
 @section('content')
 
-{{-- <form  method="post" action="@route('todo.store',[ Auth::user()->name,$boardId])"> --}}
-<form  method="post" action="@route('todo.store',[$boardId])">
+{{-- <form  method="post" action="@route('todo.store',[ Auth::user()->name,$board_id ?? ''])"> --}}
+<form  method="post" action="@route('todo.store',[$board_id])">
 @csrf
 @if($errors->any())
 @foreach ($errors->all() as $e)
@@ -20,7 +20,7 @@
     <button name="background1" value="green">vert</button>
         <button name="background1" value="blue">bleu</button>
 
-{{-- <p>{{ $boardId }}</p> --}}
+{{-- <p>{{ $board_id ?? '' }}</p> --}}
 {{-- @foreach ($boards as $b)
     <style>.stx-background{background-image: url(../assets/background/{{ $b->background }})}</style>
     @endforeach --}}
@@ -31,7 +31,7 @@
             <h5 class="card-title stx-cards-todo">{{ $todo->todoName }}</h5>
                 @foreach ($myTask as $task)
 
-                @if ($task->todoLink == $todo->id)
+                @if ($task->todo_id == $todo->id)
                 <div class="row justify-content-around">
                     <h5>{{ $task->taskContent }}</h5>
 
@@ -46,7 +46,7 @@
 
                 {{-- <div class="collapse" id="commentaires{{$task->id}}">
                     @foreach ($myComment as $com)
-                    @if ($com->taskLink == $task->id)
+                    @if ($com->task_id == $task->id)
                     <div class="row justify-content-center ">
                         <h5>{{ $com->comment }}</h5>
                     </div>
@@ -66,7 +66,7 @@
                 @endif
                 @endforeach
 
-                {{-- <form  method="post" action="@route('task.store',[ Auth::user()->name,$boardId,$todo->id])"> --}}
+                {{-- <form  method="post" action="@route('task.store',[ Auth::user()->name,$board_id ?? '',$todo->id])"> --}}
                 <form  method="post" action="@route('task.store',[$todo->id])">
                     @csrf
                 <input type="text" name="taskContent"  placeholder="nouvelle tache">

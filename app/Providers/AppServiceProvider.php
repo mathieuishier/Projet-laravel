@@ -19,17 +19,29 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot()
     {
+        setlocale(LC_TIME, config('app.locale'));
+
         Blade::directive('route',function ($expression){
         return "<?php echo route($expression);?>";
         });
 
         Blade::directive('debug',function ($expression){
             return "<?php echo dd($expression);?>";
-                    });
+        });
 
         Blade::directive('asset',function ($expression){
             return "<?php echo asset($expression);?>";
-                });
+        });
 
+
+        // Roles @admin <viewBlade> @endadmin
+        Blade::if('admin', function () {
+            return auth()->user()->role === 'admin';
+        });
+
+            // url
+        Blade::if('request', function ($url) {
+            return request()->is($url);
+        });
     }
 }

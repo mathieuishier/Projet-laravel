@@ -9,7 +9,7 @@
         </div>
         {{-- <form  method="post" action="@route("comment.store",[Auth::user()->name,$boardId,$task->id])"> --}}
             @foreach ($myComment as $com)
-            @if ($com->taskLink == $task->id)
+            @if ($com->task_id == $task->id)
             <div class="row justify-content-center ">
                 <h5>{{ $com->comment }}</h5>
             </div>

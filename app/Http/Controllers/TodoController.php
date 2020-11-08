@@ -4,35 +4,26 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Task;
-use App\Todo;
-use App\Comment;
 use Illuminate\Support\Facades\Auth;
-// use Illuminate\Support\Facades\DB;
-     // Need for get user login
+use Illuminate\Http\Request;
+
+use App\Todo;
+use App\Task;
+use App\Comment;
+
 
 class TodoController extends Controller
 {
-    public function index($boardId)
+    public function show($board_id)
     {
-        // $myTodo = DB::table('todos')->where('boardLink', $boardId)->get();
-        // $myTodo = Todo::where('boardLink', $boardId)->get()->pluck('id')->toArray();
-        //table all id from Todo
-        // $myTask= DB::table('tasks')->get();
-        // $myComment= DB::table('comments')->get();
-
-
-
-        $myTodo = Todo::where('boardLink', $boardId)->get();            // apres le Get >> Collection
+        $myTodo = Todo::where('board_id', $board_id)->get();            // apres le Get >> Collection
         $myTask=  Task::all();
         $myComment= Comment::all();
 
-        return view ('todo', ['boardId'=>$boardId,"myTodo"=>$myTodo,"myTask"=>$myTask,"myComment"=>$myComment]);
-
+        return view ('todo', ['board_id'=>$board_id,"myTodo"=>$myTodo,"myTask"=>$myTask,"myComment"=>$myComment]);
     }
 
-    public function store(Request $request, $boardId)
+    public function store(Request $request, $board_id)
     {
 
         $request->validate(
@@ -40,13 +31,21 @@ class TodoController extends Controller
                 'todoName' => 'required',
             ]);
 
-        $td = new Todo();                         // Step1 > Create                                   // Step2 > Loadin data
-        $td->ownerId = Auth::User()->id;         //  from user login
-        $td->todoName=$request->todoName;
-        $td->boardLink=$boardId;
-        $td->save();                             // Step3 > Push in Table
+        $td = new Todo();
+            // $td->ownerId = Auth::User()->id;
+            $td->todoName=$request->todoName;
+            $td->board_id=$board_id;
+        $td->save();
 
         return back();
     }
 
 }
+
+
+        // $myTodo = DB::table('todos')->where('board_id', $board_id)->get();
+        // $myTodo = Todo::where('board_id', $board_id)->get()->pluck('id')->toArray();
+        //table all id from Todo
+        // $myTask= DB::table('tasks')->get();
+        // $myComment= DB::table('comments')->get();
+

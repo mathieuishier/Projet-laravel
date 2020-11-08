@@ -8,14 +8,16 @@ use Illuminate\Http\Request;
 use App\Board;
 
 // use Illuminate\Support\Facades\DB;
-//   $board->ownerId=DB::table('users')->select('id')->get();
-
+//      $board->user_id = DB::table('users')->select('id')->get();
 // $uid = Auth::User()->id;
+
 class BoardController extends Controller
 {
     public function index()
     {
-        return view ('board', ["boards"=>Board::all()->where('ownerId', Auth::User()->id)] );
+        $boards = Board::where('user_id', Auth::User()->id)->get();
+
+        return view ('board', compact('boards'));
     }
 
     public function store(Request $request)
@@ -25,13 +27,11 @@ class BoardController extends Controller
                 'boardName' => 'required',
             ]);
 
-        $board=new Board();                         // Step1 > Create
-                                              // Step2 > Loadin data
-        $board->ownerId = Auth::User()->id;         //  from user login
-        $board->boardName=$request->boardName;
-        $board->background=$request->background;
-
-        $board->save();                             // Step3 > Push in Table
+        $board=new Board();
+            $board->user_id = Auth::User()->id;
+            $board->boardName=$request->boardName;
+            $board->background=$request->background;
+        $board->save();
 
         return back();
     }
