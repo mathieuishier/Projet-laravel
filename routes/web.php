@@ -65,7 +65,7 @@ Route::prefix('user')->middleware('auth')->group(function () {
     Route::put('/com/{comment_id}', 'CommentController@store')
         ->name('comment.store')
         ->where('comment_id', '[0-9]+');
-    Route::put('/com/del/{comment_id}', 'CommentController@destroy')
+    Route::post('/com/del/{comment_id}', 'CommentController@destroy')
         ->name('comment.destroy')
         ->where('comment_id', '[0-9]+');
 });

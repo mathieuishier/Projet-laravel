@@ -24,13 +24,23 @@ class CommentController extends Controller
                 'comment' => 'required',
             ]);
 
-            $com = new Comment();
-                // $com->user_id = Auth::User()->id;
-                $com->comment=$request->comment;
-                $com->task_id=$task_id;
-            $com->save();
+        $com = new Comment();
+            // $com->user_id = Auth::User()->id;
+            $com->comment=$request->comment;
+            $com->task_id=$task_id;
+        $com->save();
 
-            return back();
-        }
+        return back();
+    }
+
+    public function destroy($del_id)
+    {
+        $del = Comment::find($del_id);
+        $del->delete();
+
+        return back();
+    }
+
+
 
 }
