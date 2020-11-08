@@ -9,8 +9,7 @@
         background-image: url("../../assets/background/{{ $bg->name }}.jpg");
         background-size:cover;
         width:100%;
-        height: 100%;
-
+        height: 92%;
     }
     </style>
     @endif
@@ -19,7 +18,18 @@
     @endforeach
 
 @section('content')
-
+@foreach ($myBoard as $b)
+@if ($b->id == $boardId)
+<div class="d-flex justify-content-center stx-changebn1">
+<h1 class=>{{$b->boardName}}</h1>
+    <a onclick="changeBoard()"><img src="@asset('assets/modif.png')"></a>
+</div>
+<div class="d-flex justify-content-center stx-changebn2">
+<input type="text" placeholder="{{$b->boardName}}">
+<button type='submit' onclick="changeBoard()">
+</div>
+@endif
+@endforeach
 {{-- <form  method="post" action="@route('todo.store',[ Auth::user()->name,$boardId])"> --}}
 <form  method="post" action="@route('todo.store',[$boardId])">
 @csrf
