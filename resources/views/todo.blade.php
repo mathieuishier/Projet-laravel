@@ -41,7 +41,10 @@
     <div class="row ">
         @foreach ($myTodo as $todo)
         <div class="col-3 stx-cards">
+            <form  method="post" action="@route('todo.destroy', [$todo->id] )">@csrf
             <h5 class="card-title stx-cards-todo">{{ $todo->todoName }}</h5>
+            <input type="submit" value="x" class="btn btn-sm btn-danger">
+            </form>
                 @foreach ($myTask as $task)
 
                 @if ($task->todo_id == $todo->id)

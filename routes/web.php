@@ -35,7 +35,8 @@ Route::prefix('user')->middleware('auth')->group(function () {
     Route::post('/dashboard', 'BoardController@store')
         ->name('board.store');
     Route::post('/dashboard/del/{del_id}', 'BoardController@destroy')
-        ->name('board.destroy');
+        ->name('board.destroy')
+        ->where('del_id', '[0-9]+');
 
     Route::get('/try', 'ProfileController@index')
         ->name('profile');
@@ -50,12 +51,23 @@ Route::prefix('user')->middleware('auth')->group(function () {
     Route::post('/board/{board_id}', 'TodoController@store')
         ->name('todo.store')
         ->where('board_id', '[0-9]+');
+    Route::post('/board/del/{todo_id}', 'TodoController@destroy')
+        ->name('todo.destroy')
+        ->where('todo_id', '[0-9]+');
     // });
 
     Route::post('/task/{task_id}', 'TaskController@store')
-        ->name('task.store');                                   //  ->where('task_id', '[0-9]+'); '[A-Za-z]+'
+        ->name('task.store')
+        ->where('task_id', '[0-9]+');
+    Route::post('/task/del/{task_id}', 'TaskController@destroy')
+        ->name('task.destroy')
+        ->where('task_id', '[0-9]+');
     Route::put('/com/{comment_id}', 'CommentController@store')
-        ->name('comment.store');                                //  ->where('comment_id', '[0-9]+'); '[A-Za-z]+'
+        ->name('comment.store')
+        ->where('comment_id', '[0-9]+');
+    Route::put('/com/del/{comment_id}', 'CommentController@destroy')
+        ->name('comment.destroy')
+        ->where('comment_id', '[0-9]+');
 });
 
 
