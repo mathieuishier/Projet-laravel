@@ -18,6 +18,7 @@
     @endforeach
 
 @section('content')
+<a href="@route('board')">retour</a>
 @foreach ($myBoard as $b)
 @if ($b->id == $board_id)
     <div id="stx-changebn1">
