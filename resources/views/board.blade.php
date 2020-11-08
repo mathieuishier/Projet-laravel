@@ -1,11 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
-Date : {{ \Carbon\Carbon::now()->isoFormat('LL') }}
-Date : {{ \Carbon\Carbon::now()->calendar() }}
 
-    <h1 class="text-center">vue d'ensemble des tableaux</h1>
-    <p>session de : {{ Auth::user()->name }}</p>
+    <h1 class="text-center">Dashboard</h1>
+    @if(Auth::user()->firstname)
+        <p class="text-center">session de : {{ Auth::user()->firstname }} -
+    @else
+        <p class="text-center text-info">Pensez à renseigner votre profil...  -
+    @endif
+    {{ \Carbon\Carbon::now()->isoFormat('LL') }}
+    </p>
     @if($errors->any())
     @foreach ($errors->all() as $e)
         <h3 class="clignote">{{ $e }}</h3>
@@ -24,6 +28,7 @@ Date : {{ \Carbon\Carbon::now()->calendar() }}
 <section class='container stx-margtop'>
     <div class='row'>
         @foreach ($boards as $b)
+        {{-- @dd($boards) --}}
         <div class=col-3>
             <a href="@route('todo', $b->id)">
             <div class="card text-white">
@@ -41,8 +46,12 @@ Date : {{ \Carbon\Carbon::now()->calendar() }}
                     </form>
                     <h5 class="card-title text-center" style="color:black">{{ $b->boardName }}</h5>
                 </div>
+                {{$b->updated_at}}
                 <div class="card-footer text-muted">
-                    2 days ago
+                 {{ Carbon\Carbon::parse($b->updated_at)->format('d/m/y à H:i') }}
+
+
+                    {{-- {{ \Carbon\Carbon::now()->calendar() }} --}}
                   </div>
             </div>
             </a>
