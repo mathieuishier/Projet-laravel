@@ -32,6 +32,14 @@ class TaskController extends Controller
             $tk->save();
 
             return back();
-        }
+    }
+
+    public function destroy($del_id)
+    {
+        $del = Task::find($del_id);
+        $del->delete();
+
+        return back();
+    }
 
 }

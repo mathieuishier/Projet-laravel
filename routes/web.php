@@ -62,6 +62,7 @@ Route::prefix('user')->middleware('auth')->group(function () {
     Route::post('/task/del/{task_id}', 'TaskController@destroy')
         ->name('task.destroy')
         ->where('task_id', '[0-9]+');
+
     Route::put('/com/{comment_id}', 'CommentController@store')
         ->name('comment.store')
         ->where('comment_id', '[0-9]+');

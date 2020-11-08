@@ -50,6 +50,9 @@
                 @if ($task->todo_id == $todo->id)
                 <div class="row justify-content-around">
                     <h5>{{ $task->taskContent }}</h5>
+                    <form action="@route('task.destroy', [$task->id] )" method="post">@csrf
+                        <input type="submit" value="x" class="btn btn-sm btn-danger">
+                    </form>
 
                     {{-- <a data-toggle="collapse" href="#commentaires{{$task->id}}" --}}
                     <a data-toggle="modal" href="#commentaires{{$task->id}}" role="button" aria-expanded="false" aria-controls="commentaires{{$task->id}}">
