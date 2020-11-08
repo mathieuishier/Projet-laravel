@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use App\Todo;
 use App\Task;
 use App\Comment;
+use App\Background;
+use App\Board;
 
 
 class TodoController extends Controller
@@ -17,10 +19,13 @@ class TodoController extends Controller
     public function show($board_id)
     {
         $myTodo = Todo::where('board_id', $board_id)->get();            // apres le Get >> Collection
+        $myBoard= Board::all();
         $myTask=  Task::all();
         $myComment= Comment::all();
+        $myBackground= Background::all();
 
-        return view ('todo', ['board_id'=>$board_id,"myTodo"=>$myTodo,"myTask"=>$myTask,"myComment"=>$myComment]);
+        return view ('todo', ['boardId'=>$boardId,"myBoard"=>$myBoard,"myTodo"=>$myTodo,"myTask"=>$myTask,"myComment"=>$myComment,"myBackground"=>$myBackground]);
+
     }
 
     public function store(Request $request, $board_id)

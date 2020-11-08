@@ -35,8 +35,7 @@ Route::prefix('user')->middleware('auth')->group(function () {
     Route::post('/dashboard', 'BoardController@store')
         ->name('board.store');
 
-    // PROFILE : View & Edit
-    Route::get('/profile', 'ProfileController@index')
+    Route::get('/try', 'ProfileController@index')
         ->name('profile');
     Route::post('/profile', 'ProfileController@update')
         ->name('profile.update');

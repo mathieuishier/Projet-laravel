@@ -1,6 +1,22 @@
 @extends('layouts.app')
+
+@foreach ($myBoard as $b)
+@if ($b->id == $boardId)
+@foreach ($myBackground as $bg)
+        @if ($b->background == $bg->id)
 <style>
+    .stx-bkground {
+        background-image: url("../../assets/background/{{ $bg->name }}.jpg");
+        background-size:cover;
+        width:100%;
+        height: 100%;
+
+    }
     </style>
+    @endif
+    @endforeach
+    @endif
+    @endforeach
 
 @section('content')
 
@@ -16,9 +32,6 @@
 <input type='submit' value='+'>
 </form>
 
-<button name="background1" value="yellow">jaune</button>
-    <button name="background1" value="green">vert</button>
-        <button name="background1" value="blue">bleu</button>
 
 {{-- <p>{{ $board_id ?? '' }}</p> --}}
 {{-- @foreach ($boards as $b)

@@ -1,8 +1,12 @@
-@extends('layouts.app')
+{{-- @extends('layouts.app') --}}
 
-@section('content')
+{{-- @section('content') --}}
+<style>
+    .stx-pad{padding-top: 150px;}
+    </style>
 
-<div class="container">
+
+<div class="container stx-pad">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -18,9 +22,9 @@
         <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $profil->name }}" required autocomplete="name">
 
         @error('name')
-            <span class="invalid-feedback" role="alert">
+            <div class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>
-            </span>
+            </div>
         @enderror
     </div>
 </div>
@@ -131,6 +135,6 @@
         </div>
     </div>
 </div>
-@endsection
+{{-- @endsection --}}
 
 
