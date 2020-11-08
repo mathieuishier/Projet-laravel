@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @foreach ($myBoard as $b)
-@if ($b->id == $boardId)
+@if ($b->id == $board_id)
 @foreach ($myBackground as $bg)
         @if ($b->background == $bg->id)
 <style>

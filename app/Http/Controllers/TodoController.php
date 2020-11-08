@@ -24,7 +24,7 @@ class TodoController extends Controller
         $myComment= Comment::all();
         $myBackground= Background::all();
 
-        return view ('todo', ['boardId'=>$boardId,"myBoard"=>$myBoard,"myTodo"=>$myTodo,"myTask"=>$myTask,"myComment"=>$myComment,"myBackground"=>$myBackground]);
+        return view ('todo', ['board_id'=>$board_id,"myBoard"=>$myBoard,"myTodo"=>$myTodo,"myTask"=>$myTask,"myComment"=>$myComment,"myBackground"=>$myBackground]);
 
     }
 

@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;        // Need for get user login
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Board;
-use App\background;
+use App\Background;
 
 // use Illuminate\Support\Facades\DB;
 //      $board->user_id = DB::table('users')->select('id')->get();
@@ -18,7 +18,7 @@ class BoardController extends Controller
     {
         $myBackground=  Background::all();
 
-        return view ('board', ["boards"=>Board::all()->where('ownerId', Auth::User()->id),"myBackground"=>$myBackground] );
+        return view ('board', ["boards"=>Board::all()->where('user_id', Auth::User()->id),"myBackground"=>$myBackground] );
     } // ('board', compact('boards'));
 
     public function store(Request $request)
