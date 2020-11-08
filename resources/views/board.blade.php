@@ -35,17 +35,11 @@ Date : {{ \Carbon\Carbon::now()->calendar() }}
                 @endif
                 @endforeach
                 <div class="card-img-overlay">
-                    <form action="@route('board.destroy', $b->id)" method="POST">@csrf
+                    <form action="@route('destroy', $b->id)" method="POST">@csrf
+                        <input type="hidden" name="model" value="Board">
                         <input type="submit" name="board_id" value="x" class="btn btn-danger btn-sm">
                     </form>
-
                     <h5 class="card-title text-center" style="color:black">{{ $b->boardName }}</h5>
-
-                    <form action="@route('board.update', $b->id)" method="POST">@csrf
-                        <input type="text" name="bName" value="{{$b->boardName}}">
-                        <input type="submit" name="board_id" value="edit" class="btn btn-warning btn-sm">
-                    </form>
-
                 </div>
                 <div class="card-footer text-muted">
                     2 days ago

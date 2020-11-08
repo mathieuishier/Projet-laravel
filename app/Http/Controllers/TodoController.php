@@ -47,10 +47,10 @@ class TodoController extends Controller
 
     public function destroy($del_id)
     {
-        $del = Todo::find($del_id);
-        $del->delete();
+        // $del = Todo::find($del_id);
+        // $del->delete();
 
-        return back();
+        // return back();
     }
 
 }

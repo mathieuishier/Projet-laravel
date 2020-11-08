@@ -35,10 +35,10 @@ class CommentController extends Controller
 
     public function destroy($del_id)
     {
-        $del = Comment::find($del_id);
-        $del->delete();
+        // $del = Comment::find($del_id);
+        // $del->delete();
 
-        return back();
+        // return back();
     }
 
 

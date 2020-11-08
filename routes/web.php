@@ -37,11 +37,8 @@ Route::prefix('user')->middleware('auth')->group(function () {
                     Route::post('/dashboard/edit/{edit_id}', 'BoardController@update')
                         ->name('board.update')
                         ->where('edit_id', '[0-9]+');
-    Route::post('/dashboard/del/{del_id}', 'BoardController@destroy')
-        ->name('board.destroy')
-        ->where('del_id', '[0-9]+');
 
-    Route::get('/try', 'ProfileController@index')
+    Route::get('/profile', 'ProfileController@index')
         ->name('profile');
     Route::post('/profile', 'ProfileController@update')
         ->name('profile.update');
@@ -57,9 +54,6 @@ Route::prefix('user')->middleware('auth')->group(function () {
                     Route::post('/board/edit/{board_id}', 'TodoController@store')
                         ->name('todo.update')
                         ->where('board_id', '[0-9]+');
-    Route::post('/board/del/{todo_id}', 'TodoController@destroy')
-        ->name('todo.destroy')
-        ->where('todo_id', '[0-9]+');
     // });
 
     Route::post('/task/{task_id}', 'TaskController@store')
@@ -68,9 +62,6 @@ Route::prefix('user')->middleware('auth')->group(function () {
                     Route::post('/task/edit/{task_id}', 'TaskController@update')
                         ->name('task.update')
                         ->where('task_id', '[0-9]+');
-    Route::post('/task/del/{task_id}', 'TaskController@destroy')
-        ->name('task.destroy')
-        ->where('task_id', '[0-9]+');
 
     Route::put('/com/{comment_id}', 'CommentController@store')
         ->name('comment.store')
@@ -78,9 +69,16 @@ Route::prefix('user')->middleware('auth')->group(function () {
                     Route::post('/com/edit/{comment_id}', 'CommentController@update')
                         ->name('comment.update')
                         ->where('comment_id', '[0-9]+');
-    Route::post('/com/del/{comment_id}', 'CommentController@destroy')
-        ->name('comment.destroy')
-        ->where('comment_id', '[0-9]+');
+
+        //MASTER CRUD
+    Route::post('/crud{id}', 'CrudController@destroy')
+    ->name('destroy')
+    ->where('id', '[0-9]+');
+
+    // Route::post('/crud{id}', 'CrudController@update')
+    // ->name('update')
+    // ->where('id', '[0-9]+');
+
 });
 
 

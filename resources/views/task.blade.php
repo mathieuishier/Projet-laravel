@@ -11,7 +11,8 @@
             @foreach ($myComment as $com)
             @if ($com->task_id == $task->id)
             <div class="row justify-content-center ">
-                <form  method="post" action="@route('comment.destroy', [$com->id] )">@csrf
+                <form  method="post" action="@route('destroy', $com->id )">@csrf
+                    <input type="hidden" name="model" value="Comment">
                         <h5>{{ $com->comment }}</h5>
                         <input type="submit" value="x" class="btn btn-sm btn-danger">
                 </form>

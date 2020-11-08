@@ -46,10 +46,10 @@ class BoardController extends Controller
      */
     public function destroy($del_id)
     {
-        $del = Board::find($del_id);
-        $del->delete();
+        // $del = Board::find($del_id);
+        // $del->delete();
 
-        return back();
+        // return back();
     }
 
     public function update(Request $request, $edit_id)
@@ -57,6 +57,7 @@ class BoardController extends Controller
         // dd($edit_id);
         // dd($request);
         Board::where('user_id', Auth::user()->id)
+            ->where('id', $edit_id)
             ->update(['boardName' => $request->bName]);
 
         return back();

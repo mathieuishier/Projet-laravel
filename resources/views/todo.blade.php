@@ -27,13 +27,12 @@
         </div>
     </div>
     <div id='stx-changebn2' style='display:none;'>
-        <form method="post">
-            {{-- action="@route('board.update')" --}}
-        <div class="d-flex justify-content-center" >
-            <input type="text" placeholder="{{$b->boardName}}">
-            <button type='submit'>
+        <form action="@route('board.update', $b->id)" method="POST">@csrf
+            <div class="d-flex justify-content-center" >
+                <input type="text" name="bName" value="{{$b->boardName}}">
+                <input type="submit" name="board_id" value="edit" class="btn btn-warning btn-sm">
                 {{-- onclick="changeBoard()" --}}
-        </div>
+            </div>
         </form>
     </div>
 @endif
@@ -59,7 +58,8 @@
     <div class="row ">
         @foreach ($myTodo as $todo)
         <div class="col-3 stx-cards">
-            <form  method="post" action="@route('todo.destroy', [$todo->id] )">@csrf
+            <form  method="post" action="@route('destroy', $todo->id )">@csrf
+                <input type="hidden" name="model" value="Todo">
                 <h5 class="card-title stx-cards-todo">{{ $todo->todoName }}</h5>
                 <input type="submit" value="x" class="btn btn-sm btn-danger">
             </form>
@@ -68,7 +68,8 @@
                 @if ($task->todo_id == $todo->id)
                 <div class="row justify-content-around">
                     <h5>{{ $task->taskContent }}</h5>
-                    <form action="@route('task.destroy', [$task->id] )" method="post">@csrf
+                    <form action="@route('destroy', $task->id )" method="post">@csrf
+                            <input type="hidden" name="model" value="Task">
                         <input type="submit" value="x" class="btn btn-sm btn-danger">
                     </form>
 

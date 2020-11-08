@@ -36,10 +36,10 @@ class TaskController extends Controller
 
     public function destroy($del_id)
     {
-        $del = Task::find($del_id);
-        $del->delete();
+        // $del = Task::find($del_id);
+        // $del->delete();
 
-        return back();
+        // return back();
     }
 
     public function update(Request $request, $edit_id)
