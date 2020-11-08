@@ -76,7 +76,17 @@
 
                     {{-- <a data-toggle="collapse" href="#commentaires{{$task->id}}" --}}
                     <a data-toggle="modal" href="#commentaires{{$task->id}}" role="button" aria-expanded="false" aria-controls="commentaires{{$task->id}}">
-                        <img width="25px;" src=@asset("../assets/comment.png") alt="commentaires">
+
+                            <img width="25px;" src=@asset("../assets/comment.png") alt="commentaires">
+                            @foreach ($myComment as $com)
+                            @if ($com->task_id == $task->id)
+                            <span class="badge badge-pill badge-danger">!</span>
+                            @break
+                            @endif
+                            @endforeach
+
+
+
                     </a>
                 </div>
 
