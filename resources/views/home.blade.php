@@ -14,19 +14,18 @@
                         </div>
                     @endif
 
-                    <div v-if="!passage">
-                        <p>avant de pouvoir continuer, vous devez être majeur, quel est votre age ?
+                    <div id="message">
+                        <p>nom
                         </div>
-               <div v-if="!passage">
-
+               <div style="display:none;" id="ok">
                     <p>autrediv</p>
-
                 </div>
-                    <button v-on:click="passage()">ok</button>
+                    <button onclick="isshow()">ok</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<script src="{{ asset('js/js.js') }}"></script>
+
+
 @endsection

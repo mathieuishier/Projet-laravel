@@ -4,7 +4,8 @@
 Date : {{ \Carbon\Carbon::now()->isoFormat('LL') }}
 Date : {{ \Carbon\Carbon::now()->calendar() }}
 
-    <h1>Mes tableaux :</h1>
+    <h1 class="text-center">vue d'ensemble des tableaux</h1>
+    <p>session de : {{ Auth::user()->name }}</p>
     @if($errors->any())
     @foreach ($errors->all() as $e)
         <h3 class="clignote">{{ $e }}</h3>
@@ -20,7 +21,7 @@ Date : {{ \Carbon\Carbon::now()->calendar() }}
 <input type='submit' value='+'>
 </form>
 
-<section class='container'>
+<section class='container stx-margtop'>
     <div class='row'>
         @foreach ($boards as $b)
         <div class=col-3>

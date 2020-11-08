@@ -9,8 +9,7 @@
         background-image: url("../../assets/background/{{ $bg->name }}.jpg");
         background-size:cover;
         width:100%;
-        height: 100%;
-
+        height: 92%;
     }
     </style>
     @endif
@@ -19,8 +18,27 @@
     @endforeach
 
 @section('content')
-
-{{-- <form  method="post" action="@route('todo.store',[ Auth::user()->name,$board_id ?? ''])"> --}}
+@foreach ($myBoard as $b)
+@if ($b->id == $board_id)
+    <div id="stx-changebn1">
+        <div class="d-flex justify-content-center" >
+            <h1 class=>{{$b->boardName}}</h1>
+            <a onclick="changeBoard()"><img src="@asset('assets/modif.png')"></a>
+        </div>
+    </div>
+    <div id='stx-changebn2' style='display:none;'>
+        <form method="post">
+            {{-- action="@route('board.update')" --}}
+        <div class="d-flex justify-content-center" >
+            <input type="text" placeholder="{{$b->boardName}}">
+            <button type='submit'>
+                {{-- onclick="changeBoard()" --}}
+        </div>
+        </form>
+    </div>
+@endif
+@endforeach
+{{-- <form  method="post" action="@route('todo.store',[ Auth::user()->name,$boardId])"> --}}
 <form  method="post" action="@route('todo.store',[$board_id])">
 @csrf
 @if($errors->any())
@@ -99,3 +117,22 @@
 @endsection
 
 
+<script>
+  function changeBoard() {
+
+      var x = document.getElementById("stx-changebn1");
+      if (x.style.display === "none") {
+        x.style.display = "block";
+      } else {
+        x.style.display = "none";
+      }
+
+      var y = document.getElementById("stx-changebn2");
+      if (y.style.display === "none") {
+        y.style.display = "block";
+      } else {
+        y.style.display = "none";
+      }
+    }
+
+    </script>
