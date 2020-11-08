@@ -81,7 +81,7 @@
             </div>
         </nav>
 
-        <main class="py-4 stx-bkground">
+        <main class="container-fluid py-4 stx-bkground">
             @yield('content')
         </main>
     </div>
