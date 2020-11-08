@@ -6,7 +6,7 @@ use App\Admin;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('/');
 
 Auth::routes();
 

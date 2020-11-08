@@ -19,7 +19,7 @@ class ProfileController extends Controller
         $valider = '';
 
 
-        return view('try', [
+        return view('profile', [
             'profil' => $prof, 'valider' => $valider
         ]);
     }

@@ -27,7 +27,7 @@
 @endforeach
 
 @section('content')
-
+<a href="@route('board')">retour</a>
 @foreach ($myBoard as $b)
     @if ($b->id == $board_id)
         <div id="stx-changebn1">
@@ -105,6 +105,12 @@
                                 <a data-toggle="modal" class="" href="#commentaires{{$task->id}}" role="button" aria-expanded="false" aria-controls="commentaires{{$task->id}}">
                                     <img width="25px;" src=@asset("../assets/comment.png") alt="commentaires">
                                 </a>
+                                @foreach ($myComment as $com)
+                                @if ($com->task_id == $task->id)
+                                <span class="badge badge-pill badge-danger">!</span>
+                                @break
+                                @endif
+                                @endforeach
 
                         <div class="ml-auto">
                             <form action="@route('destroy', $task->id )" class="" method="post">@csrf
