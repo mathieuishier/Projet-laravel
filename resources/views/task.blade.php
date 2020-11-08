@@ -9,9 +9,12 @@
         </div>
         {{-- <form  method="post" action="@route("comment.store",[Auth::user()->name,$boardId,$task->id])"> --}}
             @foreach ($myComment as $com)
-            @if ($com->taskLink == $task->id)
+            @if ($com->task_id == $task->id)
             <div class="row justify-content-center ">
-                <h5>{{ $com->comment }}</h5>
+                <form  method="post" action="@route('comment.destroy', [$com->id] )">@csrf
+                        <h5>{{ $com->comment }}</h5>
+                        <input type="submit" value="x" class="btn btn-sm btn-danger">
+                </form>
             </div>
             @endif
             @endforeach

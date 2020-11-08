@@ -3,24 +3,23 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;        // Need for get user login
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Board;
-use App\background;
+use App\Background;
 
 // use Illuminate\Support\Facades\DB;
-//   $board->ownerId=DB::table('users')->select('id')->get();
-
+//      $board->user_id = DB::table('users')->select('id')->get();
 // $uid = Auth::User()->id;
+
 class BoardController extends Controller
 {
     public function index()
     {
-
         $myBackground=  Background::all();
 
-        return view ('board', ["boards"=>Board::all()->where('ownerId', Auth::User()->id),"myBackground"=>$myBackground] );
-    }
+        return view ('board', ["boards"=>Board::all()->where('user_id', Auth::User()->id),"myBackground"=>$myBackground] );
+    } // ('board', compact('boards'));
 
     public function store(Request $request)
     {
@@ -30,13 +29,25 @@ class BoardController extends Controller
                 'background' => 'required',
             ]);
 
-        $board=new Board();                         // Step1 > Create
-                                              // Step2 > Loadin data
-        $board->ownerId = Auth::User()->id;         //  from user login
-        $board->boardName=$request->boardName;
-        $board->background=$request->background;
+        $board=new Board();
+            $board->user_id = Auth::User()->id;
+            $board->boardName=$request->boardName;
+            $board->background=$request->background;
+        $board->save();
 
-        $board->save();                             // Step3 > Push in Table
+        return back();
+    }
+
+        /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($del_id)
+    {
+        $del = Board::find($del_id);
+        $del->delete();
 
         return back();
     }

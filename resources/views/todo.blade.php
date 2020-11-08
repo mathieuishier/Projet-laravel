@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @foreach ($myBoard as $b)
-@if ($b->id == $boardId)
+@if ($b->id == $board_id)
 @foreach ($myBackground as $bg)
         @if ($b->background == $bg->id)
 <style>
@@ -31,7 +31,7 @@
 @endif
 @endforeach
 {{-- <form  method="post" action="@route('todo.store',[ Auth::user()->name,$boardId])"> --}}
-<form  method="post" action="@route('todo.store',[$boardId])">
+<form  method="post" action="@route('todo.store',[$board_id])">
 @csrf
 @if($errors->any())
 @foreach ($errors->all() as $e)
@@ -43,7 +43,7 @@
 </form>
 
 
-{{-- <p>{{ $boardId }}</p> --}}
+{{-- <p>{{ $board_id ?? '' }}</p> --}}
 {{-- @foreach ($boards as $b)
     <style>.stx-background{background-image: url(../assets/background/{{ $b->background }})}</style>
     @endforeach --}}
@@ -51,12 +51,18 @@
     <div class="row ">
         @foreach ($myTodo as $todo)
         <div class="col-3 stx-cards">
-            <h5 class="card-title stx-cards-todo">{{ $todo->todoName }}</h5>
+            <form  method="post" action="@route('todo.destroy', [$todo->id] )">@csrf
+                <h5 class="card-title stx-cards-todo">{{ $todo->todoName }}</h5>
+                <input type="submit" value="x" class="btn btn-sm btn-danger">
+            </form>
                 @foreach ($myTask as $task)
 
-                @if ($task->todoLink == $todo->id)
+                @if ($task->todo_id == $todo->id)
                 <div class="row justify-content-around">
                     <h5>{{ $task->taskContent }}</h5>
+                    <form action="@route('task.destroy', [$task->id] )" method="post">@csrf
+                        <input type="submit" value="x" class="btn btn-sm btn-danger">
+                    </form>
 
                     {{-- <a data-toggle="collapse" href="#commentaires{{$task->id}}" --}}
                     <a data-toggle="modal" href="#commentaires{{$task->id}}" role="button" aria-expanded="false" aria-controls="commentaires{{$task->id}}">
@@ -69,7 +75,7 @@
 
                 {{-- <div class="collapse" id="commentaires{{$task->id}}">
                     @foreach ($myComment as $com)
-                    @if ($com->taskLink == $task->id)
+                    @if ($com->task_id == $task->id)
                     <div class="row justify-content-center ">
                         <h5>{{ $com->comment }}</h5>
                     </div>
@@ -89,7 +95,7 @@
                 @endif
                 @endforeach
 
-                {{-- <form  method="post" action="@route('task.store',[ Auth::user()->name,$boardId,$todo->id])"> --}}
+                {{-- <form  method="post" action="@route('task.store',[ Auth::user()->name,$board_id ?? '',$todo->id])"> --}}
                 <form  method="post" action="@route('task.store',[$todo->id])">
                     @csrf
                 <input type="text" name="taskContent"  placeholder="nouvelle tache">

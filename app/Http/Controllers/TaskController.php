@@ -18,21 +18,28 @@ class TaskController extends Controller
     // }
 
 
-    public function store(Request $request, $todoLink)
+    public function store(Request $request, $todo_id)
     {
         $request->validate(
             [
                 'taskContent' => 'required',
             ]);
 
-            $tk = new Task();                         // Step1 > Create
-                                                    // Step2 > Loadin data
-            $tk->ownerId = Auth::User()->id;         //  from user login
-            $tk->taskContent=$request->taskContent;
-            $tk->todoLink=$todoLink;
+            $tk = new Task();
+                // $tk->ownerId = Auth::User()->id;
+                $tk->taskContent=$request->taskContent;
+                $tk->todo_id=$todo_id;
+            $tk->save();
 
-            $tk->save();                             // Step3 > Push in Table
             return back();
-        }
+    }
+
+    public function destroy($del_id)
+    {
+        $del = Task::find($del_id);
+        $del->delete();
+
+        return back();
+    }
 
 }

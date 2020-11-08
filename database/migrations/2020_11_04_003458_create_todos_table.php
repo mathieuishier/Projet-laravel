@@ -15,10 +15,13 @@ class CreateTodosTable extends Migration
     {
         Schema::create('todos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('ownerId');
             $table->string('todoName');
-            $table->integer('boardLink');
             $table->timestamps();
+
+            // $table->bigInteger('ownerId');
+            $table->bigInteger('board_id')->unsigned()->index();
+            $table->foreign('board_id')->references('id')->on('boards')
+                ->onDelete('cascade');
         });
     }
 

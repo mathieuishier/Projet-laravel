@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+Date : {{ \Carbon\Carbon::now()->isoFormat('LL') }}
+Date : {{ \Carbon\Carbon::now()->calendar() }}
 
     <h1 class="text-center">vue d'ensemble des tableaux</h1>
     <p>session de : {{ Auth::user()->name }}</p>
@@ -31,6 +33,9 @@
                 @endif
                 @endforeach
                 <div class="card-img-overlay">
+                    <form action="@route('board.destroy', $b->id)" method="POST">@csrf
+                        <input type="submit" name="board_id" value="x" class="btn btn-danger btn-sm">
+                    </form>
                     <h5 class="card-title text-center" style="color:black">{{ $b->boardName }}</h5>
                 </div>
             </div>
