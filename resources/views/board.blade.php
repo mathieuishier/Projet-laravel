@@ -46,13 +46,11 @@
                     </form>
                     <h5 class="card-title text-center" style="color:black">{{ $b->boardName }}</h5>
                 </div>
-                {{$b->updated_at}}
                 <div class="card-footer text-muted">
-                 {{ Carbon\Carbon::parse($b->updated_at)->format('d/m/y à H:i') }}
-
-
+                    {{ Carbon\Carbon::parse($b->updated_at)->format('d/m/y à H:i') }}
                     {{-- {{ \Carbon\Carbon::now()->calendar() }} --}}
-                  </div>
+                    {{-- {{$b->updated_at}} --}}
+                </div>
             </div>
             </a>
         </div>
