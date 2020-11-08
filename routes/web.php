@@ -34,6 +34,8 @@ Route::prefix('user')->middleware('auth')->group(function () {
         ->name('board');
     Route::post('/dashboard', 'BoardController@store')
         ->name('board.store');
+    Route::post('/dashboard/del/{del_id}', 'BoardController@destroy')
+        ->name('board.destroy');
 
     Route::get('/try', 'ProfileController@index')
         ->name('profile');
