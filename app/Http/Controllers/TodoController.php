@@ -76,7 +76,7 @@ class TodoController extends Controller
             ]);
 
         $td = new Todo();
-            // $td->ownerId = Auth::User()->id;
+            $td->owner_id = Auth::User()->id;
             $td->todoName=$request->todoName;
             $td->board_id=$board_id;
         $td->save();

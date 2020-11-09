@@ -25,7 +25,7 @@ class CommentController extends Controller
             ]);
 
         $com = new Comment();
-            // $com->user_id = Auth::User()->id;
+            $com->owner_id = Auth::User()->id;
             $com->comment=$request->comment;
             $com->task_id=$task_id;
         $com->save();

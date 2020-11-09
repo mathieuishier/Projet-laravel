@@ -26,7 +26,7 @@ class TaskController extends Controller
             ]);
 
             $tk = new Task();
-                // $tk->ownerId = Auth::User()->id;
+                $tk->owner_id = Auth::User()->id;
                 $tk->taskContent=$request->taskContent;
                 $tk->todo_id=$todo_id;
             $tk->save();

@@ -43,6 +43,7 @@ class BoardController extends Controller
 
         $board=new Board();
             $board->user_id = Auth::User()->id;
+            $board->owner_id = Auth::User()->id;
             $board->boardName=$request->boardName;
             $board->background=$request->background;
         $board->save();
