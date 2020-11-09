@@ -12,8 +12,11 @@ const mix = require('laravel-mix');
  */
 mix.js('resources/js/app.js', 'public/js')
    .js('resources/js/js.js', 'public/js')
+   .js('resources/js/impress.js', 'public/js')
    .sass('resources/sass/app.scss', 'public/css')
-   .sass('resources/sass/welcome.scss', 'public/css');
+   .sass('resources/sass/welcome.scss', 'public/css')
+   .sass('resources/sass/impress.scss', 'public/css')
+   .sass('resources/sass/impress-common.scss', 'public/css');
 
 
 

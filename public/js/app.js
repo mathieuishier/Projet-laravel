@@ -49892,6 +49892,28 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/sass/impress-common.scss":
+/*!********************************************!*\
+  !*** ./resources/sass/impress-common.scss ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./resources/sass/impress.scss":
+/*!*************************************!*\
+  !*** ./resources/sass/impress.scss ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ "./resources/sass/welcome.scss":
 /*!*************************************!*\
   !*** ./resources/sass/welcome.scss ***!
@@ -49904,15 +49926,17 @@ __webpack_require__.r(__webpack_exports__);
 /***/ }),
 
 /***/ 0:
-/*!*******************************************************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/sass/app.scss ./resources/sass/welcome.scss ***!
-  \*******************************************************************************************/
+/*!**************************************************************************************************************************************************************!*\
+  !*** multi ./resources/js/app.js ./resources/sass/app.scss ./resources/sass/welcome.scss ./resources/sass/impress.scss ./resources/sass/impress-common.scss ***!
+  \**************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(/*! C:\wamp64\www\cours\resources\js\app.js */"./resources/js/app.js");
 __webpack_require__(/*! C:\wamp64\www\cours\resources\sass\app.scss */"./resources/sass/app.scss");
-module.exports = __webpack_require__(/*! C:\wamp64\www\cours\resources\sass\welcome.scss */"./resources/sass/welcome.scss");
+__webpack_require__(/*! C:\wamp64\www\cours\resources\sass\welcome.scss */"./resources/sass/welcome.scss");
+__webpack_require__(/*! C:\wamp64\www\cours\resources\sass\impress.scss */"./resources/sass/impress.scss");
+module.exports = __webpack_require__(/*! C:\wamp64\www\cours\resources\sass\impress-common.scss */"./resources/sass/impress-common.scss");
 
 
 /***/ })

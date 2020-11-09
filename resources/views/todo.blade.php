@@ -17,8 +17,8 @@
         height: 92%;
     }
     .cos-bg{
-        overflow: scroll;
-        height: 77vh;
+        overflow:scroll;
+        height: 80%;
     }
 </style>
     @endif

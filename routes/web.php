@@ -6,6 +6,9 @@ use App\Admin;
 
 Route::get('/', function () {return view('welcome');})->name('/');
 Route::get('/auto', 'AutoController@auto')->name('auto');
+Route::get('presentation', function () {return view('presentation');})->name('presentation');
+
+
 
 Auth::routes();
 

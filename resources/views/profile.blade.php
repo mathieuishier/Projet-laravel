@@ -413,7 +413,7 @@ transition: width 0.5s linear;
 
         </li>
           <li>
-            <a href="@route('/')" style="--i: 0.3s;">Contact</a>
+            <a href="@route('presentation')" style="--i: 0.3s;">Contact</a>
           </li>
 
         </ul>
