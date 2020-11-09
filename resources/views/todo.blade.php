@@ -27,13 +27,29 @@
 @endforeach
 
 @section('content')
-<a href="@route('board')">retour</a>
+<a href="@route('board')" class="btn btn-bg btn-dark">retour</a>
 @foreach ($myBoard as $b)
     @if ($b->id == $board_id)
         <div id="stx-changebn1">
             <div class="d-flex justify-content-center" >
                 <h1 class=>{{$b->boardName}}</h1>
                 <a onclick="changeBoard()"><img src="@asset('assets/modif.png')"></a>
+                <form action="@route('home')">
+                    <div class="input-group mb-3 ml-5">
+                        <div class="input-group-prepend">
+                          <label class="input-group-text" for="inputGroupSelect01">Partager</label>
+                        </div>
+                        <select class="custom-select" id="inputGroupSelect01">
+                            <option selected>avec</option>
+                            @foreach ($sharing as $share)
+                                <option value="{{$share->id}}">{{$share->name}}</option>
+                            @endforeach
+                        </select>
+                        <button class="btn btn-outline-primary ml-2">valider</button>
+                      </div>
+                </form>
+
+                </div>
             </div>
         </div>
         <div id='stx-changebn2' style='display:none;'>

@@ -12,19 +12,30 @@ use App\Task;
 use App\Comment;
 use App\Background;
 use App\Board;
+use App\User;
 
 
 class TodoController extends Controller
 {
     public function show($board_id)
     {
+        $sharing = User::all();
+        $myBoard = Board::all();
         $myTodo = Todo::where('board_id', $board_id)->get();            // apres le Get >> Collection
-        $myBoard= Board::all();
-        $myTask=  Task::all();
-        $myComment= Comment::all();
-        $myBackground= Background::all();
+        $myTask =  Task::all();
+        $myComment = Comment::all();
+        $myBackground = Background::all();
 
-        return view ('todo', ['board_id'=>$board_id,"myBoard"=>$myBoard,"myTodo"=>$myTodo,"myTask"=>$myTask,"myComment"=>$myComment,"myBackground"=>$myBackground]);
+        return view ('todo', [
+            "board_id" => $board_id,
+
+            "sharing" => $sharing,
+            "myBoard" => $myBoard,
+            "myTodo" => $myTodo,
+            "myTask" => $myTask,
+            "myComment" => $myComment,
+            "myBackground" => $myBackground,
+        ]);
 
     }
 
