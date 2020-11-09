@@ -34,14 +34,16 @@
             <div class="d-flex justify-content-center" >
                 <h1 class=>{{$b->boardName}}</h1>
                 <a onclick="changeBoard()"><img src="@asset('assets/modif.png')"></a>
-                <form action="@route('home')">
+                <form action="@route('pivot')" method='post'>
+                    @csrf
                     <div class="input-group mb-3 ml-5">
                         <div class="input-group-prepend">
                             <label class="input-group-text" for="inputGroupSelect01">Partager</label>
                             <select class="custom-select" id="inputGroupSelect01">
                                 <option selected>avec</option>
                                 @foreach ($sharing as $share)
-                                    <option value="{{$share->id}}">{{$share->name}}</option>
+                                    <option name='share_id' value="{{$share->id}}">{{$share->name}}</option>
+                                    <input type='hidden' name='board_id' value='{{$b->board_id}}'>
                                 @endforeach
                             </select>
                             <button class="btn btn-success ml-2">valider</button>
