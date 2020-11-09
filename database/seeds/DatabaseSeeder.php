@@ -15,10 +15,11 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             UsersTableSeeder::class,
-            BoardsTableSeeder::class,
-            TodosTableSeeder::class,
-            TasksTableSeeder::class,
-            CommentsTableSeeder::class,
+            // BoardsTableSeeder::class,
+            // TodosTableSeeder::class,
+            // TasksTableSeeder::class,
+            // CommentsTableSeeder::class,
+            BackgroundsTableSeeder::class,
         ]);
     }
 }
