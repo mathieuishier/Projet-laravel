@@ -406,14 +406,18 @@ transition: width 0.5s linear;
             <a href="@route('profile')" style="--i: 0.2s;">Profil</a>
           </li>
           <li>
-            <a href="@route('board')" style="--i: 0.25s;">logout</a>
-          </li>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" >
+                <a href="{{ route('logout') }}" type="submit" style="--i: 0.25s;">   {{ __('Logout') }}</a>
+                    @csrf
+                </form>
+
+        </li>
           <li>
             <a href="@route('/')" style="--i: 0.3s;">Contact</a>
-
-
           </li>
+
         </ul>
+
       </div>
     </div>
 

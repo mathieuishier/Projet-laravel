@@ -81,8 +81,8 @@
             {{-- <div class="col-3 stx-cards"> --}}
             <div class="card stx-cards rounded">
                 <form  method="post" action="@route('destroy', $todo->id )">@csrf
-                    {{-- <input type="hidden" name="model" value="Todo">
-                    <h5 class="card-title stx-cards-todo">{{ $todo->todoName }}</h5>
+                    <input type="hidden" name="model" value="Todo">
+                    {{-- <h5 class="card-title stx-cards-todo">{{ $todo->todoName }}</h5>
                     <input type="submit" value="x" class="btn btn-sm btn-danger"> --}}
                     <div class="card-header stx-cards-todo">
                         {{ $todo->todoName }}
@@ -104,13 +104,14 @@
                             {{-- <a data-toggle="collapse" href="#commentaires{{$task->id}}" --}}
                                 <a data-toggle="modal" class="" href="#commentaires{{$task->id}}" role="button" aria-expanded="false" aria-controls="commentaires{{$task->id}}">
                                     <img width="25px;" src=@asset("../assets/comment.png") alt="commentaires">
-                                </a>
+
                                 @foreach ($myComment as $com)
                                 @if ($com->task_id == $task->id)
                                 <span class="badge badge-pill badge-danger">!</span>
                                 @break
                                 @endif
                                 @endforeach
+                            </a>
 
                         <div class="ml-auto">
                             <form action="@route('destroy', $task->id )" class="" method="post">@csrf

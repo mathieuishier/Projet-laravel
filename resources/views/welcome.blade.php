@@ -32,15 +32,15 @@
                     </div>
                     <video src="assets/smoke.mp4"autoplay muted></video>
                             <h1>
-                                <span>l</span>
-                                <span>e</span>
-                                <span>s</span>
-                                <span>-</span>
-                                <span>b</span>
+                                <span>B</span>
                                 <span>r</span>
                                 <span>a</span>
                                 <span>n</span>
                                 <span>k</span>
+                                <span>u</span>
+                                <span>l</span>
+                                <span>é</span>
+                                <span>s</span>
                             </h1>
 
                         </section>
