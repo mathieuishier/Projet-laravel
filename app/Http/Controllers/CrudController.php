@@ -86,12 +86,18 @@ class CrudController extends Controller
      */
     public function destroy(Request $request, $del_id)
     {
+        dd($request);
         $model = $request->model;
 
         if ($model == 'User' ) {
             $del = User::find($del_id);
         } else if ($model == 'Board' ) {
-            $del = Board::find($del_id);
+            // Only owner can delete
+
+            if ( Board::where('user_id' == Auth::user()->id) )
+            {
+                $del = Board::find($del_id);
+            }
         } else if ($model == 'Todo' ) {
             $del = Todo::find($del_id);
         } else if ($model == 'Task' ) {
