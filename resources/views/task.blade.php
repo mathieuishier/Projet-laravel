@@ -11,8 +11,12 @@
             @foreach ($myComment as $com)
             @if ($com->task_id == $task->id)
             <div class="row justify-content-around ">
-                <p class="text-center">{{ Auth::user()->firstname }} {{ Auth::user()->name }} -
+                @foreach ($myUser as $user)
+                @if ($user->id == $com->owner_id)
+                <p class="text-center">{{ $user->name }} {{ $user->firstname }} -
                   {{ Carbon\Carbon::parse($com->updated_at)->format('d/m/y à H:i') }} : </p>
+                @endif
+                @endforeach
 
                 <form  method="post" action="@route('destroy', $com->id )">@csrf
                     <input type="hidden" name="model" value="Comment">

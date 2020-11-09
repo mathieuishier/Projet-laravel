@@ -46,7 +46,7 @@ class TodoController extends Controller
 
 
 
-
+        $myUser = User::all();
         $myBoard = Board::all();
         $myTodo = Todo::where('board_id', $board_id)->get();            // apres le Get >> Collection
         $myTask =  Task::all();
@@ -60,7 +60,7 @@ class TodoController extends Controller
             "myTask" => $myTask,
             "myComment" => $myComment,
             "myBackground" => $myBackground,
-
+            "myUser"=>$myUser,
             "sharing" => $sharing,
             "myPivot" => $myPivot,
         ]);

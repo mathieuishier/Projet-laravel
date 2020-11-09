@@ -13,6 +13,7 @@
         /* background-attachment: fixed, scroll; */
         background-repeat: no-repeat, repeat-y;
         background-size:cover;
+        background-position: center center;
         width:100%;
         height: 92%;
     }
