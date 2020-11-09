@@ -37,16 +37,16 @@
                 <form action="@route('home')">
                     <div class="input-group mb-3 ml-5">
                         <div class="input-group-prepend">
-                          <label class="input-group-text" for="inputGroupSelect01">Partager</label>
+                            <label class="input-group-text" for="inputGroupSelect01">Partager</label>
+                            <select class="custom-select" id="inputGroupSelect01">
+                                <option selected>avec</option>
+                                @foreach ($sharing as $share)
+                                    <option value="{{$share->id}}">{{$share->name}}</option>
+                                @endforeach
+                            </select>
+                            <button class="btn btn-success ml-2">valider</button>
                         </div>
-                        <select class="custom-select" id="inputGroupSelect01">
-                            <option selected>avec</option>
-                            @foreach ($sharing as $share)
-                                <option value="{{$share->id}}">{{$share->name}}</option>
-                            @endforeach
-                        </select>
-                        <button class="btn btn-outline-primary ml-2">valider</button>
-                      </div>
+                    </div>
                 </form>
 
                 </div>
