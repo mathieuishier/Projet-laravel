@@ -16,6 +16,8 @@ class UsersTableSeeder extends Seeder
     {
         factory(User::class, 20)->create();
 
+
+
         // factory(User::class, 10)->create()->each(function($user) {
         //     $user->boards()->saveMany(factory(Board::class, 5)->create([
         //         'user_id' => $user->id
