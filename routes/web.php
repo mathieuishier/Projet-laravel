@@ -21,58 +21,44 @@ Route::get('/home', 'HomeController@index')->name('home');
 // ----------------------------
 Route::prefix('admin')->middleware('admin')->group(function () {
     Route::get('/', function () {
-        return view('home');            //TEST >> DO ADMIN THREE
+        return view('');            //TEST >> DO ADMIN THREE
     });
 });
 
 // AUTH ROUTES----------------
 // ----------------------------
-Route::prefix('user')->middleware('auth')->group(function () {
+Route::prefix('user/')->middleware('auth')->group(function () {
     // DASHBOARD :  Meta View: manage all Todos (my and share)
-    Route::get('/dashboard', 'BoardController@index')
-        ->name('board');
-    Route::post('/dashboard', 'BoardController@store')
-        ->name('board.store');
-    Route::post('/dashboard/edit/{edit_id}', 'BoardController@update')
-        ->where('edit_id', '[0-9]+')
-        ->name('board.update');
+    Route::get('/dashboard', 'BoardController@index')->name('board');
+    Route::post('/dashboard', 'BoardController@store')->name('board.store');
+    Route::post('/dashboard/edit/{edit_id}', 'BoardController@update')->name('board.update')
+        ->where('edit_id', '[0-9]+');
 
-    Route::get('/profile', 'ProfileController@index')
-        ->name('profile');
-    Route::post('/profile', 'ProfileController@update')
-        ->name('profile.update');
+    Route::get('/profile', 'ProfileController@index')->name('profile');
+    Route::post('/profile', 'ProfileController@update')->name('profile.update');
 
-    // Route::prefix('board/{todoId}')->group(function () {
-    // Manage Todo
-    Route::get('/board/{board_id}', 'TodoController@show')
-        ->where('board_id', '[0-9]+')
-        ->name('todo');
-    Route::post('/board/{board_id}', 'TodoController@store')
-        ->where('board_id', '[0-9]+')
-        ->name('todo.store');
-    Route::post('/board/edit/{board_id}', 'TodoController@store')
-        ->where('board_id', '[0-9]+')
-        ->name('todo.update');
-    // });
+    Route::prefix('board/')->group(function () {
+        Route::get('/{board_id}', 'TodoController@show')->name('todo')
+            ->where('board_id', '[0-9]+');
+        Route::post('/{board_id}', 'TodoController@store')->name('todo.store')
+            ->where('board_id', '[0-9]+');
+        Route::post('/edit/{board_id}', 'TodoController@update')->name('todo.update')
+            ->where('board_id', '[0-9]+');
+    });
 
-    Route::post('/task/{task_id}', 'TaskController@store')
-        ->where('task_id', '[0-9]+')
-        ->name('task.store');
-    Route::post('/task/edit/{task_id}', 'TaskController@update')
-        ->where('task_id', '[0-9]+')
-        ->name('task.update');
+    Route::post('/task/{task_id}', 'TaskController@store')->name('task.store')
+        ->where('task_id', '[0-9]+');
+    Route::post('/task/edit/{task_id}', 'TaskController@update')->name('task.update')
+        ->where('task_id', '[0-9]+');
 
-    Route::put('/com/{comment_id}', 'CommentController@store')
-     ->where('comment_id', '[0-9]+')
-        ->name('comment.store');
-    Route::post('/com/edit/{comment_id}', 'CommentController@update')
-        ->where('comment_id', '[0-9]+')
-        ->name('comment.update');
+    Route::put('/com/{comment_id}', 'CommentController@store')->name('comment.store')
+        ->where('comment_id', '[0-9]+');
+    Route::post('/com/edit/{comment_id}', 'CommentController@update')->name('comment.update')
+        ->where('comment_id', '[0-9]+');
 
         // Master D. (pending)
-    Route::post('/crud{id}', 'CrudController@destroy')
-    ->name('destroy')
-    ->where('id', '[0-9]+');
+    Route::post('/crud{id}', 'CrudController@destroy')->name('destroy')
+        ->where('id', '[0-9]+');
 
 });
 
@@ -82,5 +68,3 @@ Route::prefix('user')->middleware('auth')->group(function () {
 // Route::middleware('admin')->group(function () {
 //     // Page Compte Admin
 // });
-
-// use App\Admin;
