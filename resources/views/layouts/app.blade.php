@@ -11,6 +11,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/js.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -18,6 +19,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
 </head>
 <body>
     <div id="app">
@@ -50,12 +52,7 @@
                             @endif
                         @else
 
-                            <li class="nav-item">
-                                <a class="nav-link" href="">home</a>
-                            </li>
-                            <li class="nav-item">
-                                search bar <input type='text' href="">
-                            </li>
+
                             <li class="nav-item">
                                 <a class="nav-link" href="@route('board')">mes tableaux</a>
                                 {{-- <a class="nav-link" href="@route('{{Auth::user()->id}}/board')">mes tableaux</a> --}}
@@ -84,7 +81,7 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="container-fluid py-4 stx-bkground">
             @yield('content')
         </main>
     </div>

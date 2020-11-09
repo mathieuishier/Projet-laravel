@@ -15,11 +15,14 @@ class CreateTasksTable extends Migration
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('ownerId');
+            $table->bigInteger('owner_id');
             $table->string('taskContent');
-            $table->integer('todoLink');
-            // $table->file('photo')->nullable;
+            // $table->file('photo');
             $table->timestamps();
+
+            $table->bigInteger('todo_id')->unsigned()->index();
+            $table->foreign('todo_id')->references('id')->on('todos')
+                ->onDelete('cascade');
         });
     }
 
