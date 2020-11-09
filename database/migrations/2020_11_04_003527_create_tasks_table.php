@@ -15,11 +15,11 @@ class CreateTasksTable extends Migration
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger('owner_id');
             $table->string('taskContent');
             // $table->file('photo');
             $table->timestamps();
 
-            // $table->bigInteger('ownerId');
             $table->bigInteger('todo_id')->unsigned()->index();
             $table->foreign('todo_id')->references('id')->on('todos')
                 ->onDelete('cascade');

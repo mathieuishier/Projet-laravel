@@ -164,25 +164,6 @@
 
                 @include('task')
 
-                {{-- <div class="collapse" id="commentaires{{$task->id}}">
-                    @foreach ($myComment as $com)
-                    @if ($com->task_id == $task->id)
-                    <div class="row justify-content-center ">
-                        <h5>{{ $com->comment }}</h5>
-                    </div>
-                    @endif
-                    @endforeach
-                    <div class="row justify-content-center">
-                    <form  method="post" action="@route("comment.store",[$task->id])">
-                        @csrf
-                        @method('PUT')
-                        <div>
-                            <input name="comment" type="text" placeholder="laissez un commentaire">
-                            <input type='submit' value='+'>
-                        </div>
-                    </form>
-                    </div>
-                </div> --}}
                 @endif
                 @endforeach
 
