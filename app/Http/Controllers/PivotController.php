@@ -23,12 +23,14 @@ class PivotController extends Controller
      */
     public function create(Request $request)
     {
-    
+
         $piv = new Pivot();
         // $com->user_id = Auth::User()->id;
         $piv->board_id=$request->board_id;
         $piv->user_id= $request->share_id;
         $piv->save();
+
+        return back();
     }
 
     /**

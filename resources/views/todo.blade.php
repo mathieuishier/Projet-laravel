@@ -34,28 +34,11 @@
             <div class="d-flex justify-content-center" >
                 <h1 class=>{{$b->boardName}}</h1>
                 <a onclick="changeBoard()"><img src="@asset('assets/modif.png')"></a>
-                <form action="@route('pivot')" method='post'>
-                    @csrf
-                    <div class="input-group mb-3 ml-5">
-                        <div class="input-group-prepend">
-                            <label class="input-group-text" for="inputGroupSelect01">Partager</label>
-                            <select class="custom-select" id="inputGroupSelect01">
-                                <option selected>avec</option>
-                                @foreach ($sharing as $share)
-                                    <option name='share_id' value="{{$share->id}}">{{$share->name}}</option>
-                                    <input type='hidden' name='board_id' value='{{$b->board_id}}'>
-                                @endforeach
-                            </select>
-                            <button class="btn btn-success ml-2">valider</button>
-                        </div>
-                    </div>
-                </form>
-
-                </div>
             </div>
         </div>
         <div id='stx-changebn2' style='display:none;'>
-            <form action="@route('board.update', $b->id)" method="POST">@csrf
+            <form action="@route('board.update', $b->id)" method="POST">
+                @csrf
                 <div class="d-flex justify-content-center" >
                     <input type="text" name="bName" value="{{$b->boardName}}">
                     <input type="submit" name="board_id" value="edit" class="btn btn-warning btn-sm ml-2">
@@ -65,6 +48,24 @@
         </div>
     @endif
 @endforeach
+{{-- button for partage --}}
+<form action="@route('pivot')" method='post'>
+    @csrf
+    <div class="input-group mb-3 ml-5">
+        <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">Partager</label>
+            <select name='share_id' class="custom-select" id="inputGroupSelect01">
+                <option selected>avec</option>
+                @foreach ($sharing as $share)
+                    <option value="{{$share->id}}">{{$share->name}}</option>
+                    {{-- <input type='hidden' name='share_id' value='{{$share->id}}'> --}}
+                @endforeach
+            </select>
+            <input type='hidden' name='board_id' value='{{$board_id}}'>
+            <button class="btn btn-success ml-2">valider</button>
+        </div>
+    </div>
+</form>
 
 {{-- <form  method="post" action="@route('todo.store',[ Auth::user()->name,$boardId])"> --}}
 <form  method="post" action="@route('todo.store',[$board_id])">
