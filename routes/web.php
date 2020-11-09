@@ -45,18 +45,18 @@ Route::prefix('user/')->middleware('auth')->group(function () {
             ->where('board_id', '[0-9]+');
         Route::post('/{board_id}', 'TodoController@store')->name('todo.store')
             ->where('board_id', '[0-9]+');
-        Route::post('/edit/{board_id}', 'TodoController@update')->name('todo.update')
-            ->where('board_id', '[0-9]+');
+        Route::put('/edit/{todo_id}', 'TodoController@update')->name('todo.update')
+            ->where('todo_id', '[0-9]+');
     });
 
     Route::post('/task/{task_id}', 'TaskController@store')->name('task.store')
         ->where('task_id', '[0-9]+');
-    Route::post('/task/edit/{task_id}', 'TaskController@update')->name('task.update')
+    Route::put('/task/edit/{task_id}', 'TaskController@update')->name('task.update')
         ->where('task_id', '[0-9]+');
 
     Route::put('/com/{comment_id}', 'CommentController@store')->name('comment.store')
         ->where('comment_id', '[0-9]+');
-    Route::post('/com/edit/{comment_id}', 'CommentController@update')->name('comment.update')
+    Route::put('/com/edit/{comment_id}', 'CommentController@update')->name('comment.update')
         ->where('comment_id', '[0-9]+');
 
         // Master D. (pending)

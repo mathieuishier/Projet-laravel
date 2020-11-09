@@ -40,7 +40,21 @@ class CommentController extends Controller
 
         // return back();
     }
+    public function update(Request $request, $edit_id)
+    {
+        $request->validate(
+            [
+                'cmName' => 'required',
+            ]);
+            
+        $cos = Comment::find( $edit_id);
 
+        $cos->comment = $request->cmName;
+
+        $cos->save();
+
+        return back();
+    }
 
 
 }

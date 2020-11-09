@@ -93,8 +93,23 @@ class TodoController extends Controller
         // return back();
     }
 
-}
+                public function update(Request $request, $edit_id)
+                {
 
+                $request->validate(
+                    [
+                        'tdName' => 'required',
+                    ]);
+
+                    $cos = Todo::find( $edit_id);
+
+                    $cos->todoName = $request->tdName;
+
+                    $cos->save();
+
+                    return back();
+                }
+}
 
         // $myTodo = DB::table('todos')->where('board_id', $board_id)->get();
         // $myTodo = Todo::where('board_id', $board_id)->get()->pluck('id')->toArray();

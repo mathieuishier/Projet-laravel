@@ -120,17 +120,35 @@
         <div class="col-3 ">
             {{-- <div class="col-3 stx-cards"> --}}
             <div class="card stx-cards rounded">
-                <form  method="post" action="@route('destroy', $todo->id )">@csrf
-                    <input type="hidden" name="model" value="Todo">
+
                     {{-- <h5 class="card-title stx-cards-todo">{{ $todo->todoName }}</h5>
                     <input type="submit" value="x" class="btn btn-sm btn-danger"> --}}
                     <div class="card-header stx-cards-todo">
                         {{ $todo->todoName }}
-                        <button type="submit" class="close mr-3 p-1 text-danger bg-light rounded" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+
+                        <p>
+                            <a  data-toggle="collapse" href="#collap{{$todo->id}}" role="button" aria-expanded="false" aria-controls="collap{{$todo->id}}">
+                             <img src="@asset('assets/modif.png')">
+                            </a>
+                        </p>
+
+                        <div class="collapse" id="collap{{$todo->id}}">
+                                <form method='post' action="@route('todo.update',$todo->id)">
+                                @method('put')
+                                    @csrf
+                                <input name='tdName' type="text"> <input type="submit">
+                                </form>
+
+                            <form  method="post" action="@route('destroy', $todo->id )">@csrf
+                                <input type="hidden" name="model" value="Todo">
+                                <button type="submit" class="close mr-3 p-1 text-danger bg-light rounded" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </form>
+                        </div>
+
                     </div>
-                </form>
+
 
                 @foreach ($myTask as $task)
                 @if ($task->todo_id == $todo->id)
@@ -138,7 +156,20 @@
                 <div class="row ">
                     <div class="col-auto d-flex flex-row w-100 px-4">
                         <div class="align-self-center">
-                            <h5 class="">{{ $task->taskContent }}</h5>
+                            <h5>{{ $task->taskContent }}</h5>
+                            <p>
+                                <a  data-toggle="collapse" href="#collaps{{$task->id}}" role="button" aria-expanded="false" aria-controls="collaps{{$task->id}}">
+                                 <img src="@asset('assets/modif.png')">
+                                </a>
+                            </p>
+                              <div class="collapse" id="collaps{{$task->id}}">
+                                <form method='post' action="@route('task.update',$task->id)">
+                                    @method('put')
+                                    @csrf
+                                <input name='tName' type="text"> <input type="submit">
+                                </form>
+                              </div>
+
                         </div>
 
                             {{-- <a data-toggle="collapse" href="#commentaires{{$task->id}}" --}}
@@ -163,26 +194,6 @@
                 </div>
 
                 @include('task')
-
-                {{-- <div class="collapse" id="commentaires{{$task->id}}">
-                    @foreach ($myComment as $com)
-                    @if ($com->task_id == $task->id)
-                    <div class="row justify-content-center ">
-                        <h5>{{ $com->comment }}</h5>
-                    </div>
-                    @endif
-                    @endforeach
-                    <div class="row justify-content-center">
-                    <form  method="post" action="@route("comment.store",[$task->id])">
-                        @csrf
-                        @method('PUT')
-                        <div>
-                            <input name="comment" type="text" placeholder="laissez un commentaire">
-                            <input type='submit' value='+'>
-                        </div>
-                    </form>
-                    </div>
-                </div> --}}
                 @endif
                 @endforeach
 

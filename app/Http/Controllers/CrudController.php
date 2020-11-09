@@ -86,7 +86,8 @@ class CrudController extends Controller
      */
     public function destroy(Request $request, $del_id)
     {
-        dd($request);
+
+        // if (Board::where('user_id'== Auth::user()->id) ==  Board::where('board_id'== $board_id)){
         $model = $request->model;
 
         if ($model == 'User' ) {
