@@ -34,7 +34,7 @@
             <div class="card text-white">
                 {{-- <div class="card-header">
                 </div> --}}
-                @foreach ($myBackground as $bg)
+                @foreach ($myBackground ?? '' as $bg)
                 @if ($b->background == $bg->id)
                 <img src="../assets/background/{{ $bg->name }}.jpg" class="card-img" alt="screen dashboard">
                 @endif

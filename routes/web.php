@@ -4,9 +4,8 @@ use App\Admin;
 
 // use App\User;
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('/');
+Route::get('/', function () {return view('welcome');})->name('/');
+Route::get('/auto', 'AutoController@auto')->name('auto');
 
 Auth::routes();
 
