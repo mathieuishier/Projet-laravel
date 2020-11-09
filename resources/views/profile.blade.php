@@ -399,36 +399,49 @@ transition: width 0.5s linear;
       <div class="links">
         <ul>
 
-          <li>
-            <a href="@route('board')" style="--i: 0.15s;">Mes Tableaux </a>
-          </li>
-          <li>
-            <a href="@route('profile')" style="--i: 0.2s;">Profil</a>
-          </li>
-          <li>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" >
-                <a href="{{ route('logout') }}" type="submit" style="--i: 0.25s;">   {{ __('Logout') }}</a>
+            <li>
+              <a href="@route('/')" style="--i: 0.15s;">Welcome</a>
+            </li>
+
+            <li>
+                <a href="@route('board')" style="--i: 0.2s;">Mes Tableaux </a>
+            </li>
+
+            <li>
+                <a href="@route('home')" style="--i: 0.25s;">Contact</a>
+            </li>
+
+            <li>
+                <a href="{{ route('logout') }}" style="--i: 0.3s;" onclick="
+                    event.preventDefault();
+                    document.getElementById('logout-form').submit();">
+                    {{ __('Logout') }}
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                     @csrf
                 </form>
-
-        </li>
-          <li>
-            <a href="@route('presentation')" style="--i: 0.3s;">Contact</a>
-          </li>
-
+            </li>
         </ul>
 
-      </div>
     </div>
+</div>
 
+
+
+{{-- <li>
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" >
+    <a href="{{ route('logout') }}" type="submit" style="--i: 0.3s;">   {{ __('Logout') }}</a>
+        @csrf
+    </form>
+</li> --}}
 
     <script>
-const hamburger_menu = document.querySelector(".hamburger-menu");
-const container = document.querySelector(".container");
+        const hamburger_menu = document.querySelector(".hamburger-menu");
+        const container = document.querySelector(".container");
 
-hamburger_menu.addEventListener("click", () => {
-  container.classList.toggle("active");
-});
+        hamburger_menu.addEventListener("click", () => {
+            container.classList.toggle("active");
+        });
     </script>
   </body>
 </html>

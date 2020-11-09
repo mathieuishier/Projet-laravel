@@ -132,7 +132,7 @@ function isshow() {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\wamp64\www\cours\resources\js\js.js */"./resources/js/js.js");
+module.exports = __webpack_require__(/*! /Users/link/xdev/trello.ooo/resources/js/js.js */"./resources/js/js.js");
 
 
 /***/ })
