@@ -19,7 +19,7 @@ class TodoController extends Controller
 {
     public function show($board_id)
     {
-        $sharing = User::all();
+        $sharing = User::all()->where('id' , '!=' , Auth::User()->id);
         $myBoard = Board::all();
         $myTodo = Todo::where('board_id', $board_id)->get();            // apres le Get >> Collection
         $myTask =  Task::all();
