@@ -65,7 +65,7 @@
         </div>
     @endif
 @endforeach
-
+@dd($board_id)
 {{-- <form  method="post" action="@route('todo.store',[ Auth::user()->name,$boardId])"> --}}
 <form  method="post" action="@route('todo.store',[$board_id])">
 @csrf
