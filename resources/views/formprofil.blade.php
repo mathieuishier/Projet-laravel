@@ -130,7 +130,9 @@
                         </div>
                     </form>
                 </div>
-                <p>{{ $valider }}</p>
+                <div class="text-md-center">
+                    <p>{{ $valider }}</p>
+                    </div>
             </div>
         </div>
     </div>
