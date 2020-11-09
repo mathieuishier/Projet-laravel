@@ -12,6 +12,7 @@ use App\Task;
 use App\Comment;
 use App\Background;
 use App\Board;
+use App\BoardUser;
 use App\User;
 
 
@@ -19,7 +20,33 @@ class TodoController extends Controller
 {
     public function show($board_id)
     {
-        $sharing = User::all()->where('id' , '!=' , Auth::User()->id);
+        // $sharing = User::with('boards')->where('id' , '!=' , Auth::User()->id)->get();
+
+        // All users except Me
+        $sharing = User::where('id' , '!=' , Auth::User()->id)->get();
+        // dd($sharing);
+
+        // RECUP TABLES DE l'USER
+        // $sharingBoard = $sharing->boards();
+        // dd($sharingBoard);
+
+        $identity = User::where('id' , '==', BoardUser::where('user_id')->get());
+        // dd($identity);
+
+        // foreach ($sharing as $share ) {
+        //     // dd($share->boards);
+        // }
+
+        $bb = Board::with('users.boards')->where('user_id' , '!=' , Auth::User()->id)->get();
+
+
+
+        // $myPivot = BoardUser::where('board_id', '==', $board_id)->select('user_id');
+        $myPivot = BoardUser::all()->where('board_id', '==', $board_id);
+
+
+
+
         $myBoard = Board::all();
         $myTodo = Todo::where('board_id', $board_id)->get();            // apres le Get >> Collection
         $myTask =  Task::all();
@@ -28,13 +55,14 @@ class TodoController extends Controller
 
         return view ('todo', [
             "board_id" => $board_id,
-
-            "sharing" => $sharing,
             "myBoard" => $myBoard,
             "myTodo" => $myTodo,
             "myTask" => $myTask,
             "myComment" => $myComment,
             "myBackground" => $myBackground,
+
+            "sharing" => $sharing,
+            "myPivot" => $myPivot,
         ]);
 
     }
@@ -58,6 +86,7 @@ class TodoController extends Controller
 
     public function destroy($del_id)
     {
+        // Master Delete >> web.php
         // $del = Todo::find($del_id);
         // $del->delete();
 
@@ -73,3 +102,16 @@ class TodoController extends Controller
         // $myTask= DB::table('tasks')->get();
         // $myComment= DB::table('comments')->get();
 
+        // $myBoard = Board::where('user_id' , '==' , Auth::User()->id)->get();
+
+        // $sharing = User::all()->where('id' , '!=' , Auth::User()->id);
+        // $sharing = User::where('id' , '!=' , Auth::User()->id)->get();
+
+        // $pivot = Pivot::all();
+
+        // $myBoard = Board::all()->where('user_id' , '==' , Auth::User()->id)->get();
+
+        // $myTodo = Todo::where('board_id', $board_id)->get();            // apres le Get >> Collection
+        // $myTask =  Task::all();
+        // $myComment = Comment::all();
+        // $myBackground = Background::all();

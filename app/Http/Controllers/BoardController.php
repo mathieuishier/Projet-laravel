@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Board;
 use App\Background;
+use App\BoardUser;
 
 // use Illuminate\Support\Facades\DB;
 //      $board->user_id = DB::table('users')->select('id')->get();
@@ -16,9 +17,20 @@ class BoardController extends Controller
 {
     public function index()
     {
-        $myBackground=  Background::all();
+        $myBackground =  Background::all();
 
-        return view ('board', ["boards"=>Board::all()->where('user_id', Auth::User()->id),"myBackground"=>$myBackground] );
+        $myShareBoards = BoardUser::all()->where('user_id' , '==' , Auth::User()->id);
+        // dd($myShareBoards);
+
+        $otherB = Board::all()->where('user_id' , '!=', Auth::User()->id);
+        // dd($otherB);
+
+        return view ('board', [
+            "boards" => Board::all()->where('user_id', Auth::User()->id),
+            "myBackground"=> $myBackground,
+            "shareBoards" => $myShareBoards,
+            'otherB' => $otherB,
+        ] );
     } // ('board', compact('boards'));
 
     public function store(Request $request)

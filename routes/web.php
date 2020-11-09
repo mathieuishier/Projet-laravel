@@ -64,7 +64,7 @@ Route::prefix('user/')->middleware('auth')->group(function () {
         ->where('id', '[0-9]+');
 
 
-        Route::post('/pivot', 'PivotController@create')->name('pivot');
+        Route::post('/pivot', 'BoardUserController@create')->name('pivot');
 
 
 });

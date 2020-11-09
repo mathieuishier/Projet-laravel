@@ -26,6 +26,7 @@
 </form>
 
 <section class='container stx-margtop'>
+    <h2>Mes Tableaux :</h2>
     <div class='row'>
         @foreach ($boards as $b)
         {{-- @dd($boards) --}}
@@ -34,7 +35,7 @@
             <div class="card text-white">
                 {{-- <div class="card-header">
                 </div> --}}
-                @foreach ($myBackground ?? '' as $bg)
+                @foreach ($myBackground as $bg)
                 @if ($b->background == $bg->id)
                 <img src="../assets/background/{{ $bg->name }}.jpg" class="card-img" alt="screen dashboard">
                 @endif
@@ -55,7 +56,41 @@
             </a>
         </div>
         @endforeach
+
     </div>
+    <h2>Mes tableaux partagés :</h2>
+    <div class="row">
+        @foreach ($otherB as $b)
+        @foreach ($shareBoards as $sh)
+        @if ($b->id == $sh->board_id)
+        {{-- @dd($boards) --}}
+        <div class=col-3>
+            <a href="@route('todo', $b->id)">
+            <div class="card text-white">
+                {{-- <div class="card-header">
+                </div> --}}
+                @foreach ($myBackground as $bg)
+                @if ($b->background == $bg->id)
+                <img src="../assets/background/{{ $bg->name }}.jpg" class="card-img" alt="screen dashboard">
+                @endif
+                @endforeach
+                <div class="card-img-overlay">
+
+                    <h5 class="card-title text-center" style="color:black">{{ $b->boardName }}</h5>
+                </div>
+                <div class="card-footer text-muted">
+                    {{ Carbon\Carbon::parse($b->updated_at)->format('d/m/y à H:i') }}
+                    {{-- {{ \Carbon\Carbon::now()->calendar() }} --}}
+                    {{-- {{$b->updated_at}} --}}
+                </div>
+            </div>
+            </a>
+        </div>
+        @endif
+        @endforeach
+        @endforeach
+    </div>
+
 </section>
 
 @endsection

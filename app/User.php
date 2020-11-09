@@ -39,9 +39,11 @@ class User extends Authenticatable
 
     public function boards() {
 
-        return $this->hasMany(Board::class);
+
+        return $this->belongsToMany(Board::class);
         // return $this->hasMany('App\Board');
 
         // , 'foreign_key', 'local_key'
     }
+
 }

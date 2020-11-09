@@ -27,7 +27,47 @@
 @endforeach
 
 @section('content')
-<a href="@route('board')" class="btn btn-bg btn-dark">retour</a>
+
+{{-- button for partage --}}
+<div class="container-fluid d-flex flex-row">
+    <a href="@route('board')" class="btn btn-bg btn-dark">retour</a>
+    <form action="@route('pivot')" method='post'>
+        @csrf
+        <div class="input-group mb-3 ml-5">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01">Partager</label>
+                <select name='share_id' class="custom-select" id="inputGroupSelect01">
+                    <option selected>avec</option>
+                    @foreach ($sharing as $share)
+                        <option value="{{$share->id}}">{{$share->name}}</option>
+                        {{-- <input type='hidden' name='share_id' value='{{$share->id}}'> --}}
+                    @endforeach
+                </select>
+                <input type='hidden' name='board_id' value='{{$board_id}}'>
+                <button class="btn btn-success ml-2">valider</button>
+            </div>
+        </div>
+    </form>
+
+    <div>
+        <p>
+
+@foreach ($myPivot as $p)
+    {{-- @dd($p->user_id) --}}
+    @foreach ($sharing as $sha)
+        @if($sha->id == $p->user_id)
+            {{$sha->name}}
+        @endif
+        {{-- @dd( $sha->where('id' , '==' , $p->user_id)) --}}
+        {{-- @dd($sha->name)         --}}
+    @endforeach
+@endforeach
+
+        </p>
+    </div>
+
+</div>
+
 @foreach ($myBoard as $b)
     @if ($b->id == $board_id)
         <div id="stx-changebn1">
@@ -48,45 +88,26 @@
         </div>
     @endif
 @endforeach
-{{-- button for partage --}}
-<form action="@route('pivot')" method='post'>
-    @csrf
-    <div class="input-group mb-3 ml-5">
-        <div class="input-group-prepend">
-            <label class="input-group-text" for="inputGroupSelect01">Partager</label>
-            <select name='share_id' class="custom-select" id="inputGroupSelect01">
-                <option selected>avec</option>
-                @foreach ($sharing as $share)
-                    <option value="{{$share->id}}">{{$share->name}}</option>
-                    {{-- <input type='hidden' name='share_id' value='{{$share->id}}'> --}}
-                @endforeach
-            </select>
-            <input type='hidden' name='board_id' value='{{$board_id}}'>
-            <button class="btn btn-success ml-2">valider</button>
-        </div>
-    </div>
-</form>
 
 {{-- <form  method="post" action="@route('todo.store',[ Auth::user()->name,$boardId])"> --}}
-<form  method="post" action="@route('todo.store',[$board_id])">
-@csrf
+    <form  method="post" action="@route('todo.store',[$board_id])">
+        @csrf
 
-    @if($errors->any())
-        @foreach ($errors->all() as $e)
-            <h3 class="clignote">{{ $e }}</h3>
-        @endforeach
-    @endif
+            @if($errors->any())
+                @foreach ($errors->all() as $e)
+                    <h3 class="clignote">{{ $e }}</h3>
+                @endforeach
+            @endif
 
-    {{-- <input name='todoName'type='text' placeholder="New ticket"> --}}
-    {{-- <input type='submit' value='+'> --}}
-    <div class="input-group mb-3 w-25 ml-5">
-        <div class="input-group-prepend">
-            <button class="input-group-text" type='submit' id="inputGroup-sizing-default">New ticket</button>
-        </div>
-        <input type="text" name='todoName' class="form-control" aria-describedby="inputGroup-sizing-default">
-    </div>
-</form>
-
+            {{-- <input name='todoName'type='text' placeholder="New ticket"> --}}
+            {{-- <input type='submit' value='+'> --}}
+            <div class="input-group mb-3 w-25 ml-5">
+                <div class="input-group-prepend">
+                    <button class="input-group-text" type='submit' id="inputGroup-sizing-default">New ticket</button>
+                </div>
+                <input type="text" name='todoName' class="form-control" aria-describedby="inputGroup-sizing-default">
+            </div>
+        </form>
 
 {{-- <p>{{ $board_id ?? '' }}</p> --}}
 {{-- @foreach ($boards as $b)

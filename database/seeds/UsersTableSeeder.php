@@ -23,6 +23,7 @@ class UsersTableSeeder extends Seeder
         //         'user_id' => $user->id
         //         ]));
         //     });
+
         App\User::create([
             'name' => 'Cos',
             'role' => 'admin',
@@ -31,13 +32,25 @@ class UsersTableSeeder extends Seeder
         ]);
 
         App\User::create([
-            'name' => 'cedric',
+            'name' => 'Cedric',
             'role' => 'admin',
             'password' =>'$2y$10$R2i4dAYvHapDD.J9AcC2M.XA9LbVldfS5JCENVy4.AA/e4U50k3n2',
             'email' =>'elliott_ced@hotmail.com',
         ]);
 
+        App\User::create([
+            'name' => 'Steven',
+            'role' => '',
+            'password' => '$2y$10$wAvx3fYyH8awNU.uTK50uezk/dWAK5esxYr7djSI0Phy77u30LU/q',
+            'email' => '8costa21@gmail.com',
+        ]);
 
+        App\User::create([
+            'name' => 'Mathieu',
+            'role' => '',
+            'password' =>'$2y$10$R2i4dAYvHapDD.J9AcC2M.XA9LbVldfS5JCENVy4.AA/e4U50k3n2',
+            'email' =>'elliott_ced@hotmail.com',
+        ]);
     }
 }
 

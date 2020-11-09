@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePivotsTable extends Migration
+class CreateBoardUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreatePivotsTable extends Migration
      */
     public function up()
     {
-        Schema::create('pivots', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('board_user', function (Blueprint $table) {
             $table->bigInteger('board_id');
             $table->bigInteger('user_id');
-            $table->timestamps();
         });
     }
 

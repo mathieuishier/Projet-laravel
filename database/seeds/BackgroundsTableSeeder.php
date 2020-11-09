@@ -11,7 +11,6 @@ class BackgroundsTableSeeder extends Seeder
      */
     public function run()
     {
-
         App\Background::create([
             'name' => 'clair',
         ]);
@@ -35,6 +34,5 @@ class BackgroundsTableSeeder extends Seeder
         App\Background::create([
             'name' => 'trait',
         ]);
-
     }
 }

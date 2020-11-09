@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Pivot;
+
+use App\BoardUser;
 use Illuminate\Http\Request;
 
-class PivotController extends Controller
+class BoardUserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -24,7 +25,7 @@ class PivotController extends Controller
     public function create(Request $request)
     {
 
-        $piv = new Pivot();
+        $piv = new BoardUser();
         // $com->user_id = Auth::User()->id;
         $piv->board_id=$request->board_id;
         $piv->user_id= $request->share_id;
