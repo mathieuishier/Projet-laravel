@@ -63,6 +63,10 @@ Route::prefix('user/')->middleware('auth')->group(function () {
     Route::post('/crud{id}', 'CrudController@destroy')->name('destroy')
         ->where('id', '[0-9]+');
 
+
+        Route::post('/pivot', 'PivotController@create')->name('pivot');
+
+
 });
 
 
