@@ -35,15 +35,15 @@
                         <video src="assets/smoke.mp4"autoplay muted></video>
 
                         <h1>
-                            <span>D</span>
+                            <span>B</span>
                             <span>r</span>
-                            <span>e</span>
                             <span>a</span>
-                            <span>m</span>
-                            <span>T</span>
-                            <span>e</span>
-                            <span>a</span>
-                            <span>m</span>
+                            <span>n</span>
+                            <span>k</span>
+                            <span>u</span>
+                            <span>l</span>
+                            <span>é</span>
+                            <span>s</span>
                         </h1>
 
                     </section>

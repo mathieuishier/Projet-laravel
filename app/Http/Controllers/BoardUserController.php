@@ -24,6 +24,11 @@ class BoardUserController extends Controller
      */
     public function create(Request $request)
     {
+        $request->validate(
+            [
+                'share_id' => 'required',
+            ]);
+
 
         $piv = new BoardUser();
         // $com->user_id = Auth::User()->id;

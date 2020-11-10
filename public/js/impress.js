@@ -3289,7 +3289,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\wamp64\www\new_laravel\resources\js\impress.js */"./resources/js/impress.js");
+module.exports = __webpack_require__(/*! /Users/link/xdev/trello.ooo/resources/js/impress.js */"./resources/js/impress.js");
 
 
 /***/ })
