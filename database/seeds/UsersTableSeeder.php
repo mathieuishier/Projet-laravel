@@ -34,8 +34,8 @@ class UsersTableSeeder extends Seeder
         App\User::create([
             'name' => 'Cedric',
             'role' => 'admin',
-            'password' =>'$2y$10$R2i4dAYvHapDD.J9AcC2M.XA9LbVldfS5JCENVy4.AA/e4U50k3n2',
-            'email' =>'elliott_ced@hotmail.com',
+            'password' => '$2y$10$R2i4dAYvHapDD.J9AcC2M.XA9LbVldfS5JCENVy4.AA/e4U50k3n2',
+            'email' => 'elliott_ced@hotmail.com',
         ]);
 
         App\User::create([
@@ -47,13 +47,9 @@ class UsersTableSeeder extends Seeder
 
         App\User::create([
             'name' => 'Mathieu',
-            'role' => '',
-            'password' =>'$2y$10$R2i4dAYvHapDD.J9AcC2M.XA9LbVldfS5JCENVy4.AA/e4U50k3n2',
-            'email' =>'elliott_ced@hotmail.com',
+            'role' => 'admin',
+            'password' => '$2y$10$z2AiYRPdiiyDkhpzGe2iz.z7tgu8PIb1g7fOpWL2WuacaNQsajoiW',
+            'email' => 'mathieu1d@mg.com',
         ]);
     }
 }
-
-
-
-
