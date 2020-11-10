@@ -23,9 +23,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 // ADMIN ROUTES----------------
 // ----------------------------
 Route::prefix('admin')->middleware('admin')->group(function () {
-    Route::get('/', function () {
-        return view('admin');            //TEST >> DO ADMIN THREE
-    });
+    Route::get('/', 'AdminController@show')->name('admin');
+    Route::post('/role/{id}', 'AdminController@role')->name('arole')
+    ->where('edit_id', '[0-9]+');
+    Route::post('/destroy/{id}', 'AdminController@destroy')->name('adestroy')
+    ->where('edit_id', '[0-9]+');
+
 });
 
 // AUTH ROUTES----------------

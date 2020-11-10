@@ -52,7 +52,7 @@
                             @endif
                         @else
 
-
+                                {{$injection}}
                             <li class="nav-item">
                                 <a class="nav-link" href="@route('board')">mes tableaux</a>
                                 {{-- <a class="nav-link" href="@route('{{Auth::user()->id}}/board')">mes tableaux</a> --}}
