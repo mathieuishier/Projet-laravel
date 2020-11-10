@@ -15,11 +15,11 @@ class CreateBoardsTable extends Migration
     {
         Schema::create('boards', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger('owner_id')->nullable();
             $table->text('boardName');
             $table->text('background');
             $table->timestamps();
 
-            $table->bigInteger('owner_id')->nullable;
             // $table->set('shareId',[])->nullable();
             $table->bigInteger('user_id')->unsigned()->index();
             $table->foreign('user_id')->references('id')->on('users')
