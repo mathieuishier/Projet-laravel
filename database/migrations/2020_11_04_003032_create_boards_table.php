@@ -15,6 +15,7 @@ class CreateBoardsTable extends Migration
     {
         Schema::create('boards', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->bigInteger('owner_id')->nullable();
             $table->text('boardName');
             $table->text('background');
             $table->timestamps();

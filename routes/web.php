@@ -24,7 +24,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 // ----------------------------
 Route::prefix('admin')->middleware('admin')->group(function () {
     Route::get('/', function () {
-        return view('');            //TEST >> DO ADMIN THREE
+        return view('admin');            //TEST >> DO ADMIN THREE
     });
 });
 

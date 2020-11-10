@@ -38,7 +38,7 @@
             <div class="input-group-prepend">
                 <label class="input-group-text" for="inputGroupSelect01">Partager</label>
                 <select name='share_id' class="custom-select" id="inputGroupSelect01">
-                    <option selected>avec</option>
+                    <option selected></option>
                     @foreach ($sharing as $share)
                         <option value="{{$share->id}}">{{$share->name}}</option>
                         {{-- <input type='hidden' name='share_id' value='{{$share->id}}'> --}}
