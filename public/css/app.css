@@ -10941,3 +10941,15 @@ a.text-dark:focus {
   margin-top: 25px;
 }
 
+.stx-baksecre {
+  background-image: url(/images/secre.jpg?4df5c9723d10f6c5873316f3eace1645);
+  color: white;
+}
+
+.stx-bak {
+  background-image: url(/images/winter.jpg?1c40dc898571d40c258bc78d652eabe5);
+  background-size: cover;
+  background-position: center center;
+  color: black;
+}
+

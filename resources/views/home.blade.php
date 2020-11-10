@@ -20,13 +20,6 @@
 <body class="impress-not-supported">
 
 
-
-    <div class="fallback-message">
-        <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
-        <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
-    </div>
-
-
     <div id="impress"
         data-transition-duration="1000"
 
@@ -37,33 +30,19 @@
         data-perspective="1000"
 
         data-autoplay="7">
-        <!--
-        <div id="bored" class="step slide" data-x="-1000" data-y="-1500" data-autoplay="10">
-            <q>Vous ne vous ennuyez pas
-                <b>avec toutes ces présentations</b> basées sur des diapositives?</q>
-        </div>
 
-        <div class="step slide" data-x="0" data-y="-1500">
-            <q>Dream Team aide les équipes à travailler de manière plus collaborative et à en faire plus. <strong>Les tableaux, </strong> listes et cartes <strong>Dream Team</strong> permettent aux équipes d'organiser et de hiérarchiser les projets ?</q>
-        </div>
-
-        <div class="step slide" data-x="1000" data-y="-1500">
-            <q> Travaillez avec n'importe quelle équipe
-                Que ce soit pour le travail,  <strong>un projet parallèle </strong> ou même les prochaines vacances en famille, <strong>Dream Team aide votre équipe</strong> à rester organisée.</q>
-        </div>
-    -->
 
         <div id="title" class="step" data-x="0" data-y="0" data-scale="4">
-            <span class="try">Rejoins-nous </span>
+            <span class="try"><a href="@route('board')">ENTREZ</a></span>
             <h1>Dream.Team<sup>*</sup></h1>
-            <span class="footnote"><sup>*</sup> votre rythme votre équipe vos besoins</span>
+            <span class="footnote"><sup>*</sup> Bienvenue {{Auth::user()->name}} </span>
         </div>
 
         <div id="its" class="step" data-x="850" data-y="3000" data-rotate="90" data-scale="5">
             <p>Informations en un coup d'œil,
                  des pièces jointes,  Collaborez sur des projets du début à la fin. <strong>Plongez dans les détails </strong> <br/>
-                 en ajoutant des commentaires, <a href="@route('board')">ENTREZ</a> <br/>
-                 des dates d'échéance et plus directement  <strong></strong> aux cartes Dream Team.</p>
+                 en ajoutant des commentaires,  <br/>
+                 des dates d'échéance <strong>Rejoins-nous </strong>  DreamTeam</p>
         </div>
 
         <div id="big" class="step" data-x="3500" data-y="2100" data-rotate="180" data-scale="6">
@@ -77,7 +56,7 @@
 
 
         <div id="ing" class="step" data-x="3500" data-y="-850" data-z="0" data-rotate="270" data-scale="6">
-            <p>*<b class="positioning">travail d'équipe</b>,<b class="rotating">rapidité</b> avec<b class="scaling">Brainstorming</b> travail informatisé</p>
+            <p>*<b class="positioning">travail d'équipe</b>,<b class="rotating">rapidité</b> avec<b class="scaling">Brainstorming</b> travail effiscient</p>
         </div>
 
         <div id="imagination" class="step" data-x="6700" data-y="-300" data-scale="6">
@@ -85,8 +64,8 @@
         </div>
 
         <div id="source" class="step" data-x="6300" data-y="2000" data-rotate="20" data-scale="4">
-            <p>Trois dimension?</p>
-            <q><a href="@route('board')">ENTREZ</a>Notre equipe et interconnectée et on veille sur vous</q>
+            <p>{{Auth::user()->name}} </p>
+            <q><a href="@route('board')">ENTREZ</a>votre rythme votre équipe vos besoins</q>
         </div>
 
         <div id="one-more-thing" class="step" data-x="6000" data-y="4000" data-scale="2">
