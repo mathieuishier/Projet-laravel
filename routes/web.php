@@ -2,7 +2,7 @@
 
 use App\Admin;
 
-// use App\User;
+use App\User;
 
 Route::get('/', function () {return view('welcome');})->name('/');
 Route::get('/auto', 'AutoController@auto')->name('auto');

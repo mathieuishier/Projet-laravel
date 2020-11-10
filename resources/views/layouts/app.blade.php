@@ -52,7 +52,7 @@
                             @endif
                         @else
 
-                                {{$injection}}
+
                             <li class="nav-item">
                                 <a class="nav-link" href="@route('board')">mes tableaux</a>
                                 {{-- <a class="nav-link" href="@route('{{Auth::user()->id}}/board')">mes tableaux</a> --}}
@@ -65,6 +65,11 @@
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    {{-- @if( Auth::user()->id && Collect(App\User::class)->Auth::user()->role == 'admin' ) --}}
+                                    {{-- @dd(Collect('App\User'::class)) --}}
+                                    {{-- @if( Auth::user()->id && Collect('App\User'::class)->role == 'admin' ) --}}
+                                    <a class="dropdown-item nav-linxxk" href="@route('admin')">Admin</a>
+                                    {{-- @endif --}}
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
