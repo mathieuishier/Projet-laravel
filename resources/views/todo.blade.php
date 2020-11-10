@@ -122,22 +122,20 @@
             {{-- <div class="col-3 stx-cards"> --}}
             <div class="card stx-cards rounded">
 
-                    {{-- <h5 class="card-title stx-cards-todo">{{ $todo->todoName }}</h5>
-                    <input type="submit" value="x" class="btn btn-sm btn-danger"> --}}
                     <div class="card-header stx-cards-todo">
-                        {{ $todo->todoName }}
+                        <h5>{{ $todo->todoName }}</h5>
 
-                        <p>
+
                             <a  data-toggle="collapse" href="#collap{{$todo->id}}" role="button" aria-expanded="false" aria-controls="collap{{$todo->id}}">
-                             <img src="@asset('assets/modif.png')">
+                             <img width='25px' src="@asset('assets/modif.png')">
                             </a>
-                        </p>
+
 
                         <div class="collapse" id="collap{{$todo->id}}">
                                 <form method='post' action="@route('todo.update',$todo->id)">
                                 @method('put')
                                     @csrf
-                                <input name='tdName' type="text"> <input type="submit">
+                                <input name='tdName' type="text" placeholder="modifier le titre"> <input type="submit">
                                 </form>
 
                             <form  method="post" action="@route('destroy', $todo->id )">@csrf
@@ -156,24 +154,12 @@
 
                 <div class="row ">
                     <div class="col-auto d-flex flex-row w-100 px-4">
-                        <div class="align-self-center">
+                        <a  data-toggle="collapse" href="#collaps{{$task->id}}" role="button" aria-expanded="false" aria-controls="collaps{{$task->id}}">
+                            <img width='25px' src="@asset('assets/modif.png')">
+                           </a>
+
                             <h5>{{ $task->taskContent }}</h5>
-                            <p>
-                                <a  data-toggle="collapse" href="#collaps{{$task->id}}" role="button" aria-expanded="false" aria-controls="collaps{{$task->id}}">
-                                 <img src="@asset('assets/modif.png')">
-                                </a>
-                            </p>
-                              <div class="collapse" id="collaps{{$task->id}}">
-                                <form method='post' action="@route('task.update',$task->id)">
-                                    @method('put')
-                                    @csrf
-                                <input name='tName' type="text"> <input type="submit">
-                                </form>
-                              </div>
 
-                        </div>
-
-                            {{-- <a data-toggle="collapse" href="#commentaires{{$task->id}}" --}}
                                 <a data-toggle="modal" class="" href="#commentaires{{$task->id}}" role="button" aria-expanded="false" aria-controls="commentaires{{$task->id}}">
                                     <img width="25px;" src=@asset("../assets/comment.png") alt="commentaires">
                                 @foreach ($myComment as $com)
@@ -182,18 +168,23 @@
                                 @break
                                 @endif
                                 @endforeach
-                            </a>
+                                </a>
+                    </div>
+                    <div class="col-auto flex-row w-100 px-4 collapse" id="collaps{{$task->id}}">
+                        <form method='post' action="@route('task.update',$task->id)">
+                            @method('put')
+                            @csrf
+                            <input name='tName' type="text" placeholder="modifier le contenu"> <input type="submit">
+                        </form>
 
-                        <div class="ml-auto">
-                            <form action="@route('destroy', $task->id )" class="" method="post">@csrf
-                                <input type="hidden" name="model" value="Task">
-                                <input type="submit" value="x" class="btn btn-sm btn-danger">
+                        <form action="@route('destroy', $task->id )" class="" method="post">@csrf
+                            <input type="hidden" name="model" value="Task">
+                            <input type="submit" value="x" class="btn btn-sm btn-danger">
                             </form>
-                        </div>
                     </div>
 
                 </div>
-
+                <hr>
                 @include('task')
                 @endif
                 @endforeach

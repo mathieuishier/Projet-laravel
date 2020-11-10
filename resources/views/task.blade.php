@@ -26,11 +26,11 @@
                 </form>
             </div>
             <h5>{{ $com->comment }}</h5>
-            <p>
+
                 <a  data-toggle="collapse" href="#colla{{$com->id}}" role="button" aria-expanded="false" aria-controls="colla{{$com->id}}">
-                 <img src="@asset('assets/modif.png')">
+                 <img width='25px' src="@asset('assets/modif.png')">
                 </a>
-            </p>
+
               <div class="collapse" id="colla{{$com->id}}">
                 <form method='post' action="@route('comment.update',$com->id)">
                 @method('put')

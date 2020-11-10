@@ -20,7 +20,7 @@ class CreateBoardsTable extends Migration
             $table->text('background');
             $table->timestamps();
 
-            $table->bigInteger('owner_id')->nullable();
+
             // $table->set('shareId',[])->nullable();
             $table->bigInteger('user_id')->unsigned()->index();
             $table->foreign('user_id')->references('id')->on('users')
