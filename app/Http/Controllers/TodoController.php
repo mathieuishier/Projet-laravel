@@ -111,22 +111,22 @@ class TodoController extends Controller
                 }
 }
 
-        $myTodo = DB::table('todos')->where('board_id', $board_id)->get();
-        $myTodo = Todo::where('board_id', $board_id)->get()->pluck('id')->toArray();
-        table all id from Todo
-        $myTask= DB::table('tasks')->get();
-        $myComment= DB::table('comments')->get();
+        // $myTodo = DB::table('todos')->where('board_id', $board_id)->get();
+        // $myTodo = Todo::where('board_id', $board_id)->get()->pluck('id')->toArray();
+        //table all id from Todo
+        // $myTask= DB::table('tasks')->get();
+        // $myComment= DB::table('comments')->get();
 
-        $myBoard = Board::where('user_id' , '==' , Auth::User()->id)->get();
+        // $myBoard = Board::where('user_id' , '==' , Auth::User()->id)->get();
 
-        $sharing = User::all()->where('id' , '!=' , Auth::User()->id);
-        $sharing = User::where('id' , '!=' , Auth::User()->id)->get();
+        // $sharing = User::all()->where('id' , '!=' , Auth::User()->id);
+        // $sharing = User::where('id' , '!=' , Auth::User()->id)->get();
 
-        $pivot = Pivot::all();
+        // $pivot = Pivot::all();
 
-        $myBoard = Board::all()->where('user_id' , '==' , Auth::User()->id)->get();
+        // $myBoard = Board::all()->where('user_id' , '==' , Auth::User()->id)->get();
 
-        $myTodo = Todo::where('board_id', $board_id)->get();            // apres le Get >> Collection
-        $myTask =  Task::all();
-        $myComment = Comment::all();
-        $myBackground = Background::all();
+        // $myTodo = Todo::where('board_id', $board_id)->get();            // apres le Get >> Collection
+        // $myTask =  Task::all();
+        // $myComment = Comment::all();
+        // $myBackground = Background::all();
