@@ -123,8 +123,35 @@
             <div class="card stx-cards rounded">
 
                     <div class="card-header stx-cards-todo">
-                        <h5>{{ $todo->todoName }}</h5>
+{{-- <!---try JS------> --}}
+                        <div id="stx-1change{{ $todo->id }}">
+                            <div class="d-flex justify-content-center" >
+                                <h1 class=>{{ $todo->todoName }}</h1>
+                                <a onclick="changeTodo('{{$todo->id}}')"><img width='25px' src="@asset('assets/modif.png')"></a>
+                            </div>
+                        </div>
+                        <div id='stx-2change{{ $todo->id }}' style='display:none;'>
+                            <form action="@route('todo.update', $todo->id)" method="POST">
+                                @method('put')
+                                @csrf
+                                <div class="d-flex justify-content-center" >
+                                    <input type="text" name="tdName" value="{{$todo->todoName}}">
+                                    <input type="submit"  value="edit" class="btn btn-warning btn-sm ml-2">
+                                    {{-- onclick="changeBoard()" --}}
+                                </div>
+                            </form>
 
+                            <form  method="post" action="@route('destroy', $todo->id )">@csrf
+                                <input type="hidden" name="model" value="Todo">
+                                <button type="submit" class="close mr-3 p-1 text-danger bg-light rounded" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                                </button>
+                            </form>
+
+                        </div>
+
+
+                        {{-- <h5>{{ $todo->todoName }}</h5>
 
                             <a  data-toggle="collapse" href="#collap{{$todo->id}}" role="button" aria-expanded="false" aria-controls="collap{{$todo->id}}">
                              <img width='25px' src="@asset('assets/modif.png')">
@@ -144,7 +171,7 @@
                                 <span aria-hidden="true">&times;</span>
                                 </button>
                             </form>
-                        </div>
+                        </div> --}}
 
                     </div>
 
@@ -221,5 +248,29 @@
         y.style.display = "none";
       }
     }
+
+    function changeTodo(id) {
+
+    var x = document.getElementById("stx-1change"+id);
+    if (x.style.display === "none") {
+  x.style.display = "block";
+} else {
+  x.style.display = "none";
+}
+
+var y = document.getElementById("stx-2change"+id);
+if (y.style.display === "none") {
+  y.style.display = "block";
+} else {
+  y.style.display = "none";
+}
+
+}
+
+
+
+
+
+
 
     </script>
